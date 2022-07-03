@@ -1,0 +1,568 @@
+<!DOCTYPE html><html lang="default" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Markdown制作流程图 | Unravely</title><meta name="keywords" content="Markdown"><meta name="author" content="一只草履虫"><meta name="copyright" content="一只草履虫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="准备工作Markdown是一个轻量级的标记语言，使用普通文本编辑器就能快速编写，不仅显示格式丰富，功能也毫不含糊，分享一个md格式的API请求流程图。 在使用Markdown图表前，你首先需要有解析工具，在本地开发，用vs code再加Markdown preview插件，显然是可以胜任。  由于有些浏览器渲染不出来，所以少数样式流程图带用了图片插入，在强解析下会呈现出相同的两个效果。  基本原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown制作流程图">
+<meta property="og:url" content="http://example.com/2022/06/04/16.markdown%E6%B5%81%E7%A8%8B%E5%9B%BE/index.html">
+<meta property="og:site_name" content="Unravely">
+<meta property="og:description" content="准备工作Markdown是一个轻量级的标记语言，使用普通文本编辑器就能快速编写，不仅显示格式丰富，功能也毫不含糊，分享一个md格式的API请求流程图。 在使用Markdown图表前，你首先需要有解析工具，在本地开发，用vs code再加Markdown preview插件，显然是可以胜任。  由于有些浏览器渲染不出来，所以少数样式流程图带用了图片插入，在强解析下会呈现出相同的两个效果。  基本原理">
+<meta property="og:locale">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-06-04T07:39:22.028Z">
+<meta property="article:modified_time" content="2022-07-03T02:39:17.774Z">
+<meta property="article:author" content="一只草履虫">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="https://cdn.staticaly.com/gh/unravelyt/image-hosting/master/base_img/logo_y.webp"><link rel="canonical" href="http://example.com/2022/06/04/16.markdown%E6%B5%81%E7%A8%8B%E5%9B%BE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":700},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Markdown制作流程图',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-03 10:39:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom-css/head.css"><meta name="generator" content="Hexo 6.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.staticaly.com/gh/unravelyt/image-hosting/master/base_img/avatar.4zr2jgjmhq80.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Unravely</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Markdown制作流程图</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-06-04T07:39:22.028Z" title="Created 2022-06-04 15:39:22">2022-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-07-03T02:39:17.774Z" title="Updated 2022-07-03 10:39:17">2022-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/4-%E5%90%84%E7%A7%8D%E5%A4%87%E5%BF%98/">4.各种备忘</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>Markdown是一个轻量级的标记语言，使用普通文本编辑器就能快速编写，不仅显示格式丰富，功能也毫不含糊，分享一个md格式的API请求流程图。</p>
+<p>在使用Markdown图表前，你首先需要有解析工具，在本地开发，用vs code再加Markdown preview插件，显然是可以胜任。</p>
+<blockquote>
+<p>由于有些浏览器渲染不出来，所以少数样式流程图带用了图片插入，在强解析下会呈现出相同的两个效果。</p>
+</blockquote>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>Markdown图表支持类型包括：</p>
+<ul>
+<li>流程图：指定 mermaid（样式流程图） 或 flow （标准流程图）解析语言</li>
+<li>时序图：指定 sequence（标准时序图） 或 mermaid（样式时序图） 解析语言</li>
+<li>甘特图：指定 mermaid 解析语言</li>
+</ul>
+<p>这些复杂图形的绘制都是使用代码块实现的，指定代码块的解析语言，按照响应的绘制语法即可实现。</p>
+<h2 id="一、流程图"><a href="#一、流程图" class="headerlink" title="一、流程图"></a>一、流程图</h2><h2 id="1-1标准流程图"><a href="#1-1标准流程图" class="headerlink" title="1.1标准流程图"></a>1.1标准流程图</h2><h2 id="一个最简单的流程图"><a href="#一个最简单的流程图" class="headerlink" title="一个最简单的流程图"></a>一个最简单的流程图</h2><p><img src="https://pic3.zhimg.com/80/v2-c258f3c315826ae299c9cf26f275c55e_720w.jpeg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;flow</li>
+<li>start&#x3D;&gt;start: 接收到消息</li>
+<li>info&#x3D;&gt;operation: 读取信息</li>
+<li>setCache&#x3D;&gt;operation: 更新缓存</li>
+<li>end&#x3D;&gt;end: 处理结束</li>
+<li></li>
+<li>start-&gt;info-&gt;setCache-&gt;end</li>
+</ol>
+<h2 id="简易四步骤流程图"><a href="#简易四步骤流程图" class="headerlink" title="简易四步骤流程图"></a>简易四步骤流程图</h2><p><img src="https://pic4.zhimg.com/80/v2-a06db48aca1dbf873f627f90220af04b_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;flow</li>
+<li>st&#x3D;&gt;start: Start</li>
+<li>op&#x3D;&gt;operation: Your Operation</li>
+<li>cond&#x3D;&gt;condition: Yes or No?</li>
+<li>e&#x3D;&gt;end</li>
+<li>st-&gt;op-&gt;cond</li>
+<li>cond(yes)-&gt;e</li>
+<li>cond(no)-&gt;op</li>
+</ol>
+<h2 id="简易五步骤流程图"><a href="#简易五步骤流程图" class="headerlink" title="简易五步骤流程图"></a>简易五步骤流程图</h2><p><img src="https://pic4.zhimg.com/80/v2-180e839e72b127d9628e76b8ae9b0697_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;flow</li>
+<li>start&#x3D;&gt;start: API请求</li>
+<li>cache&#x3D;&gt;operation: 读取Redis缓存</li>
+<li>cached&#x3D;&gt;condition: 是否有缓存？</li>
+<li>sendMq&#x3D;&gt;operation: 发送MQ，后台服务更新缓存</li>
+<li>info&#x3D;&gt;operation: 读取信息</li>
+<li>setCache&#x3D;&gt;operation: 保存缓存</li>
+<li>end&#x3D;&gt;end: 返回信息</li>
+<li></li>
+<li>start-&gt;cache-&gt;cached</li>
+<li>cached(yes)-&gt;sendMq</li>
+<li>cached(no)-&gt;info</li>
+<li>info-&gt;setCache</li>
+<li>setCache-&gt;end</li>
+<li>sendMq-&gt;end</li>
+</ol>
+<h2 id="详解标准流程图"><a href="#详解标准流程图" class="headerlink" title="详解标准流程图"></a>详解标准流程图</h2><p>基本语法：</p>
+<ul>
+<li><p>定义模块 id&#x3D;&gt;关键字: 描述 （“描述”的前面必须有空格，“&#x3D;&gt;” 两端不能有空格）</p>
+</li>
+<li><p>关键字：</p>
+</li>
+<li><ul>
+<li>start 流程开始，以圆角矩形绘制</li>
+<li>opearation 操作，以直角矩形绘制</li>
+<li>condition 判断，以菱形绘制</li>
+<li>subroutine 子流程，以左右带空白框的矩形绘制</li>
+<li>inputoutput 输入输出，以平行四边形绘制</li>
+<li>end 流程结束，以圆角矩形绘制</li>
+</ul>
+</li>
+<li><p>定义模块间的流向：</p>
+</li>
+<li><ul>
+<li>模块1 id-&gt;模块2 id ：一般的箭头指向</li>
+<li>条件模块id (描述)-&gt;模块id(direction) ：条件模块跳转到对应的执行模块，并指定对应分支的布局方向</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p><img src="https://pic4.zhimg.com/80/v2-6d605b00cd02f6a60394124cddcb4d9b_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p><strong>代码：</strong></p>
+<ol>
+<li>`&#96;&#96;flow</li>
+<li>st&#x3D;&gt;start: 开始</li>
+<li>ipt&#x3D;&gt;inputoutput: 输入一个x</li>
+<li>op&#x3D;&gt;operation: 处理加工x+1</li>
+<li>cond&#x3D;&gt;condition: 溢出（是或否？）</li>
+<li>sub&#x3D;&gt;subroutine: 子流程</li>
+<li>io&#x3D;&gt;inputoutput: 输出x</li>
+<li>ed&#x3D;&gt;end: 结束</li>
+<li></li>
+<li>st-&gt;ipt-&gt;op-&gt;cond</li>
+<li>cond(yes)-&gt;io-&gt;ed</li>
+<li>cond(no)-&gt;sub-&gt;io-&gt;ed</li>
+</ol>
+<h2 id="复杂三支线流程图"><a href="#复杂三支线流程图" class="headerlink" title="复杂三支线流程图"></a>复杂三支线流程图</h2><p>效果：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-4400f6f6a20a7082ea689c580c5cc676_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;flow</li>
+<li>st&#x3D;&gt;start: Start|past:&gt;<a href="https://link.zhihu.com/?target=http://www.google.com">http://www.google.com</a>[blank]</li>
+<li>e&#x3D;&gt;end: End:&gt;<a href="https://link.zhihu.com/?target=http://www.google.com">http://www.google.com</a></li>
+<li>op1&#x3D;&gt;operation: get_hotel_ids|past</li>
+<li>op2&#x3D;&gt;operation: get_proxy|current</li>
+<li>sub1&#x3D;&gt;subroutine: get_proxy|current</li>
+<li>op3&#x3D;&gt;operation: save_comment|current</li>
+<li>op4&#x3D;&gt;operation: set_sentiment|current</li>
+<li>op5&#x3D;&gt;operation: set_record|current</li>
+<li></li>
+<li>cond1&#x3D;&gt;condition: ids_remain空?</li>
+<li>cond2&#x3D;&gt;condition: proxy_list空?</li>
+<li>cond3&#x3D;&gt;condition: ids_got空?</li>
+<li>cond4&#x3D;&gt;condition: 爬取成功??</li>
+<li>cond5&#x3D;&gt;condition: ids_remain空?</li>
+<li></li>
+<li>io1&#x3D;&gt;inputoutput: ids-remain</li>
+<li>io2&#x3D;&gt;inputoutput: proxy_list</li>
+<li>io3&#x3D;&gt;inputoutput: ids-got</li>
+<li></li>
+<li>st-&gt;op1(right)-&gt;io1-&gt;cond1</li>
+<li>cond1(yes)-&gt;sub1-&gt;io2-&gt;cond2</li>
+<li>cond2(no)-&gt;op3</li>
+<li>cond2(yes)-&gt;sub1</li>
+<li>cond1(no)-&gt;op3-&gt;cond4</li>
+<li>cond4(yes)-&gt;io3-&gt;cond3</li>
+<li>cond4(no)-&gt;io1</li>
+<li>cond3(no)-&gt;op4</li>
+<li>cond3(yes, right)-&gt;cond5</li>
+<li>cond5(yes)-&gt;op5</li>
+<li>cond5(no)-&gt;cond3</li>
+<li>op5-&gt;e</li>
+</ol>
+<h2 id="1-2样式流程图"><a href="#1-2样式流程图" class="headerlink" title="1.2样式流程图"></a>1.2样式流程图</h2><p><strong>基本语法：</strong></p>
+<ul>
+<li><p>graph 指定流程图方向：graph LR 横向，graph TD 纵向</p>
+</li>
+<li><p>元素的形状定义：</p>
+</li>
+<li><ul>
+<li>id[描述] 以直角矩形绘制</li>
+<li>id(描述) 以圆角矩形绘制</li>
+<li>id{描述} 以菱形绘制</li>
+<li>id&gt;描述] 以不对称矩形绘制</li>
+<li>id((描述)) 以圆形绘制</li>
+</ul>
+</li>
+<li><p>线条定义：</p>
+</li>
+<li><ul>
+<li>A–&gt;B 带箭头指向</li>
+<li>A—B 不带箭头连接</li>
+<li>A-.-B 虚线连接</li>
+<li>A-.-&gt;B 虚线指向</li>
+<li>A&#x3D;&#x3D;&gt;B 加粗箭头指向</li>
+<li>A–描述—B 不带箭头指向并在线段中间添加描述</li>
+<li>A–描述–&gt;B 带描述的箭头指向</li>
+<li>A-.描述.-&gt;B 带描述的虚线连指向</li>
+<li>A&#x3D;&#x3D;描述&#x3D;&#x3D;&gt;B 带描述的加粗箭头指向</li>
+</ul>
+</li>
+<li><p>子流程图定义</p>
+</li>
+<li><p>subgraph title</p>
+</li>
+<li><p>graph direction</p>
+</li>
+<li><p>end</p>
+</li>
+</ul>
+<p>示例：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-6a2d7bde8cf5e3f4a0122f51b15efe9c_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<ol>
+<li>graph LR</li>
+<li>A(开始) –&gt;B(起床)</li>
+<li>B –天气不好— C&gt;干活]</li>
+<li>C &#x3D;&#x3D;&gt; D{休息时间到了}</li>
+<li>D -.yes.-&gt; E((休息))</li>
+<li>D -.no.-&gt; C</li>
+<li>E –&gt; F(吃饭)</li>
+</ol>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;mermaid</li>
+<li>graph LR</li>
+<li>A(开始) –&gt;B(起床)</li>
+<li>B –天气不好— C&gt;干活]</li>
+<li>C &#x3D;&#x3D;&gt; D{休息时间到了}</li>
+<li>D -.yes.-&gt; E((休息))</li>
+<li>D -.no.-&gt; C</li>
+<li>E –&gt; F(吃饭)</li>
+</ol>
+<h2 id="二、时序图"><a href="#二、时序图" class="headerlink" title="二、时序图"></a>二、时序图</h2><p>时序图（Sequence Diagram）用于描述对象之间发送消息的时间顺序或显示多个对象之间的动态协作。时序图中的每条消息对应一个类操作或一个事件。</p>
+<p>时序图元素<br>时序图主要有一下几个元素：角色，对象，生命线，激活器和消息</p>
+<ul>
+<li>1、角色（Actor）<br>任何主体都可以是角色，角色对外发布消息。示例中，客户端，打印机，数据库都是角色。</li>
+<li>2，对象(Object)<br>对象代表时序图中的对象在交互中所扮演的角色，位于时序图顶部和对象代表类角色。有的时候可能有多个打印机 ，那么这些打印机都是同一角色的不同对象</li>
+<li>3，生命线(Lifeline)<br>生命线代表时序图中的对象在一段时期内的存在。时序图中每个对象和底部中心都有一条垂直的线，这就是对象的生命线，对象间 的消息存在于两条虚线间。</li>
+<li>4，激活期(Activation)<br>激活期代表时序图中的对象执行一项操作的时期，在时序图中每条生命线上的窄的矩形代表活动期。它可以被理解成C语言语义中一对花括号“{}”中的内容。csdn的Markdown中并没有这一举行，只能以右侧或左侧的注解来表示“&#96; python</li>
+<li>5，消息(Message)<br>消息是定义交互和协作中交换信息的类，用于对实体间的通信内容建模，信息用于在实体间传递信息。允许实体请求其他的服务，类角色通过发送和接受信息进行通信。</li>
+</ul>
+<h2 id="2-1标准时序图"><a href="#2-1标准时序图" class="headerlink" title="2.1标准时序图"></a>2.1标准时序图</h2><p>基本语法：</p>
+<ul>
+<li><p>Title:标题 ：指定时序图的标题</p>
+</li>
+<li><p>Note direction of 对象:描述 ： 在对象的某一侧添加描述，direction 可以为 right&#x2F;left&#x2F;over ， 对象 可以是多个对象，以 , 作为分隔符</p>
+</li>
+<li><p>participant 对象 ：创建一个对象</p>
+</li>
+<li><p>loop…end ：创建一个循环体</p>
+</li>
+<li><p>对象A-&gt;对象B:描述 ： 绘制A与B之间的对话，以实线连接</p>
+</li>
+<li><ul>
+<li>-&gt; 实线实心箭头指向</li>
+<li>–&gt; 虚线实心箭头指向</li>
+<li>-&gt;&gt; 实线小箭头指向</li>
+<li>–&gt;&gt; 虚线小箭头指向</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p><img src="https://pic4.zhimg.com/80/v2-dbb871bd66086a9f52789a2a49ca95e3_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p><strong>代码：</strong></p>
+<ol>
+<li>`&#96;&#96;sequence</li>
+<li>Title:时序图示例</li>
+<li>客户端-&gt;服务端: 我想找你拿下数据 SYN</li>
+<li>服务端–&gt;客户端: 我收到你的请求啦 ACK+SYN</li>
+<li>客户端-&gt;&gt;服务端: 我收到你的确认啦，我们开始通信吧 ACK</li>
+<li>Note right of 服务端: 我是一个服务端</li>
+<li>Note left of 客户端: 我是一个客户端</li>
+<li>Note over 服务端,客户端: TCP 三次握手</li>
+<li>participant 观察者</li>
+</ol>
+<p>再来一个UML时序图：</p>
+<p><img src="https://pic4.zhimg.com/80/v2-b36250103b8bf98ed58561c512c1dfc3_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96; sequence</li>
+<li>客户端-&gt;打印机: 打印请求(id)</li>
+<li>打印机-&gt;数据库:请求数据(id)</li>
+<li>Note right of 数据库: 执行SQL获取数据</li>
+<li>数据库–&gt;打印机:返回数据信息</li>
+<li>Note right of 打印机:使用数据打印</li>
+<li>打印机–&gt;&gt;客户端:返回打印结果</li>
+<li>客户端-&gt;客户端:等待提取结果</li>
+</ol>
+<h2 id="2-2带样式时序图"><a href="#2-2带样式时序图" class="headerlink" title="2.2带样式时序图"></a>2.2带样式时序图</h2><p>基本语法同标准时序图，不同的是</p>
+<ul>
+<li><p>需要使用 mermaid 解析，并在开头使用关键字 sequenceDiagram 指明</p>
+</li>
+<li><p>线段的样式遵循 mermaid 的解析方式</p>
+</li>
+<li><ul>
+<li>-&gt; ： 实线连接</li>
+<li>–&gt; ：虚线连接</li>
+<li>-&gt;&gt; ：实线箭头指向</li>
+<li>–&gt;&gt; ：虚线箭头指向</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-d67163fd6e8b18f21291fbaa80e47c82_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<ol>
+<li>sequenceDiagram</li>
+<li>对象A-&gt;对象B:中午吃什么？</li>
+<li>对象B-&gt;&gt;对象A: 随便</li>
+<li>loop 思考</li>
+<li>对象A-&gt;对象A: 努力搜索</li>
+<li>end</li>
+<li>对象A–&gt;&gt;对象B: 火锅？</li>
+<li>对象B-&gt;&gt;对象A: 可以</li>
+<li>Note left of 对象A: 我是一个对象A</li>
+<li>Note right of 对象B: 我是一个对象B</li>
+<li>participant 对象C</li>
+<li>Note over 对象C: 我自己说了算</li>
+</ol>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;mermaid</li>
+<li>sequenceDiagram</li>
+<li>对象A-&gt;对象B:中午吃什么？</li>
+<li>对象B-&gt;&gt;对象A: 随便</li>
+<li>loop 思考</li>
+<li>对象A-&gt;对象A: 努力搜索</li>
+<li>end</li>
+<li>对象A–&gt;&gt;对象B: 火锅？</li>
+<li>对象B-&gt;&gt;对象A: 可以</li>
+<li>Note left of 对象A: 我是一个对象A</li>
+<li>Note right of 对象B: 我是一个对象B</li>
+<li>participant 对象C</li>
+<li>Note over 对象C: 我自己说了算</li>
+</ol>
+<h2 id="三、甘特图"><a href="#三、甘特图" class="headerlink" title="三、甘特图"></a>三、甘特图</h2><p>基本语法：</p>
+<ul>
+<li><p>使用 mermaid 解析语言，在开头使用关键字 gantt 指明</p>
+</li>
+<li><p>deteFormat 格式 指明日期的显示格式</p>
+</li>
+<li><p>title 标题 设置图标的标题</p>
+</li>
+<li><p>section 描述 定义纵向上的一个环节</p>
+</li>
+<li><p>定义步骤：每个步骤有两种状态 done（已完成）&#x2F; active（执行中）</p>
+</li>
+<li><ul>
+<li>描述: 状态,id,开始日期,结束日期&#x2F;持续时间</li>
+<li>描述: 状态[,id],after id2,持续时间</li>
+<li>crit ：可用于标记该步骤需要被修正，将高亮显示</li>
+<li>如果不指定具体的开始时间或在某个步骤之后，将默认依次顺序排列</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-7c0612e72743491c3f8579a5d6e9c978_720w.jpg" alt="img"></p>
+<p>请点击输入图片描述</p>
+<ol>
+<li>gantt</li>
+<li>dateFormat YYYY-MM-DD</li>
+<li></li>
+<li>title 软件开发甘特图</li>
+<li></li>
+<li>section 设计</li>
+<li>需求:done,des1, 2019-01-06,2019-01-08</li>
+<li>原型:active,des2, 2019-01-09, 3d</li>
+<li>UI设计:des3, after des2, 5d</li>
+<li>未来任务:des4, after des3, 5d</li>
+<li></li>
+<li>section 开发</li>
+<li>学习准备理解需求:crit, done, 2019-01-06,24h</li>
+<li>设计框架:crit, done, after des2, 2d</li>
+<li>开发:crit, active, 3d</li>
+<li>未来任务:crit, 5d</li>
+<li>休息时间:2d</li>
+<li></li>
+<li>section 测试</li>
+<li>功能测试:active, a1, after des3, 3d</li>
+<li>压力测试:after a1, 20h</li>
+<li>测试报告: 48h</li>
+</ol>
+<p>代码：</p>
+<ol>
+<li>`&#96;&#96;mermaid</li>
+<li>gantt</li>
+<li>dateFormat YYYY-MM-DD</li>
+<li></li>
+<li>title 软件开发甘特图</li>
+<li></li>
+<li>section 设计</li>
+<li>需求:done,des1, 2019-01-06,2019-01-08</li>
+<li>原型:active,des2, 2019-01-09, 3d</li>
+<li>UI设计:des3, after des2, 5d</li>
+<li>未来任务:des4, after des3, 5d</li>
+<li></li>
+<li>section 开发</li>
+<li>学习准备理解需求:crit, done, 2019-01-06,24h</li>
+<li>设计框架:crit, done, after des2, 2d</li>
+<li>开发:crit, active, 3d</li>
+<li>未来任务:crit, 5d</li>
+<li>休息时间:2d</li>
+<li></li>
+<li>section 测试</li>
+<li>功能测试:active, a1, after des3, 3d</li>
+<li>压力测试:after a1, 20h</li>
+<li>测试报告: 48h</li>
+</ol>
+<h2 id="用Gravizo第三方插件画流程图"><a href="#用Gravizo第三方插件画流程图" class="headerlink" title="用Gravizo第三方插件画流程图"></a>用Gravizo第三方插件画流程图</h2><p>介绍一个在markdown中插入流程图、各种图的方法<br><a href="https://link.zhihu.com/?target=http://g.gravizo.com">http://g.gravizo.com</a></p>
+<p>打开上面这个网站, 这个网站提供动态生成各种图的http接口<br>像这样使用, 接口根据传入的参数返回图，免费版带一个西文LOGO水印。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Markdown/">Markdown</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/03/08/3.Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-08</div><div class="title">Markdown语法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">一、流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">1.1标准流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">一个最简单的流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E5%9B%9B%E6%AD%A5%E9%AA%A4%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">简易四步骤流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E4%BA%94%E6%AD%A5%E9%AA%A4%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">简易五步骤流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">详解标准流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E4%B8%89%E6%94%AF%E7%BA%BF%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">复杂三支线流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E6%A0%B7%E5%BC%8F%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">1.2样式流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-text">二、时序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E6%A0%87%E5%87%86%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-text">2.1标准时序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E5%B8%A6%E6%A0%B7%E5%BC%8F%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-text">2.2带样式时序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%98%E7%89%B9%E5%9B%BE"><span class="toc-text">三、甘特图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8Gravizo%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">用Gravizo第三方插件画流程图</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 一只草履虫</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'bBtQVBbzW7eDs5d0zHYEbyYi-gzGzoHsz',
+      appKey: '8JbhJ2dhlVdotOn2sS6AXotb',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="255,255,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="Java,C,C艹,C#,Python,GO,PHP,Ruby,SQL,Curl,JavaScript,HTML,XML,R,Lua,Scala,Erlang,Perl,Swift,Objective-C,Visual Basic,Lisp" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
