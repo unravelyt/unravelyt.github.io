@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title></title>
+      <title>Async注解实现异步调用</title>
       <link href="/2022/07/06/30.@Async&amp;@Transactional/"/>
       <url>/2022/07/06/30.@Async&amp;@Transactional/</url>
       
         <content type="html"><![CDATA[<p>在类中，调用本类的含有@Async注解的异步方法，不能直接调用（带有@Transactional的也是）</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AsyncService</span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">syncHandleData</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> Thread.currentThread().getName();</span><br><span class="line">    System.out.println(<span class="string">&quot;-----------线程１------------------&quot;</span>+name);</span><br><span class="line">    <span class="type">AsyncService</span> <span class="variable">currentProxy</span> <span class="operator">=</span> (AsyncService) AopContext.currentProxy();</span><br><span class="line">    currentProxy.syncHandleData1();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Async(&quot;asyncExecutor&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> CollectionBatch <span class="title function_">syncHandleData1</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> Thread.currentThread().getName();</span><br><span class="line">    System.out.println(<span class="string">&quot;-----------线程２------------------&quot;</span>+name);</span><br><span class="line">        System.out.println(<span class="string">&quot;开始异步处理&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>因为@Async异步是通过spring的Aop动态代理，若在类中直接调用，相当于this.syncHandleData1的方式，即是通过AsyncService对象直接调用的syncHandleData1方法，而实际上@Async注解异步的实现是通过AsyncService的代理对象调用实现的，所以这样直接调用就让异步无效了。</p><p><strong>解决的方法有三种：</strong></p><ul><li><p>把这个异步方法抽出来放在一个新类里。调用的时候把新类对象通过依赖注入的注解方式放进来直接调用就可以了。因为通过注解注入，那么这个类对象就肯定是由Spring管理的了，Spring容器会对这个类进行一系列的渲染，包括需要用的组件。</p></li><li><p>在AsyncService类中通过Spring上下文获取它的对象（写一个SpringUtil工具类实现ApplicationContextAware ，具体实现可看我另一篇博客），即可以正常调用异步方法。所以该方法获取的对象实际上是AsyncService的代理对象</p></li><li><p>通过AopContext动态代理获取对象，即上面代码所示，然后在启动类中加上下面这个注解，开启cglib代理。（因为默认是jdk代理）。此刻可以看到打印出来的是两个不同线程。</p></li></ul><p>Spring容器对对象的创建不单单是像我们new一个新对象那样简单，而是在初始化时对它进行了一系列的渲染。</p><p>比如Spring在初始化对象时，扫描到这个Bean的@Async注解，就会给它装配异步组件，扫描到它的@Transactional注解，就会给它装配事务的功能，最后我们获取的就是这个bean的代理对象，这就是Spring的动态代理。你需要什么样的对象，就动态的给你创建一个什么样的代理对象供使用。（对于@Transactional注解，放在类上，或在两个方法上都加上该注解，事务也是有效的）</p><p><strong>所以如果你用了Spring的方便的注解，那么在你需要调用这个注解方法时，一定要用Spring管理的对象去调用它，因为没有被Spring容器管理的对象是不具备这些注解的组件功能的。</strong></p>]]></content>
       
       
+      <categories>
+          
+          <category> 2.代码相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
       
     </entry>
     
