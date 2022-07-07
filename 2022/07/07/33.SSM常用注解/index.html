@@ -1,0 +1,431 @@
+<!DOCTYPE html><html lang="default" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>标题写在这儿 | Unravely</title><meta name="keywords" content="Java,Markdown,IDEA"><meta name="author" content="一只草履虫"><meta name="copyright" content="一只草履虫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="copy by  https:&#x2F;&#x2F;blog.csdn.net&#x2F;guorui_java&#x2F;article&#x2F;details&#x2F;107347754  一、Spring的常用注解1、给容器中注入组件（1）包扫描+组件标注注解 @Component：泛指各种组件 @Controller、@Service、@Repository都可以称为@Component。 @Controller：控制层 @Service：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="标题写在这儿">
+<meta property="og:url" content="http://example.com/2022/07/07/33.SSM%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Unravely">
+<meta property="og:description" content="copy by  https:&#x2F;&#x2F;blog.csdn.net&#x2F;guorui_java&#x2F;article&#x2F;details&#x2F;107347754  一、Spring的常用注解1、给容器中注入组件（1）包扫描+组件标注注解 @Component：泛指各种组件 @Controller、@Service、@Repository都可以称为@Component。 @Controller：控制层 @Service：">
+<meta property="og:locale">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-07-07T15:51:47.852Z">
+<meta property="article:modified_time" content="2022-07-07T16:00:06.916Z">
+<meta property="article:author" content="一只草履虫">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="https://cdn.staticaly.com/gh/unravelyt/image-hosting/master/base_img/logo_y.webp"><link rel="canonical" href="http://example.com/2022/07/07/33.SSM%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":700},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '标题写在这儿',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-08 00:00:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom-css/head.css"><meta name="generator" content="Hexo 6.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.staticaly.com/gh/unravelyt/image-hosting/master/base_img/avatar.4zr2jgjmhq80.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Unravely</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">标题写在这儿</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-07-07T15:51:47.852Z" title="Created 2022-07-07 23:51:47">2022-07-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-07-07T16:00:06.916Z" title="Updated 2022-07-08 00:00:06">2022-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/4-%E5%90%84%E7%A7%8D%E5%A4%87%E5%BF%98/">4.各种备忘</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>copy by  <a target="_blank" rel="noopener" href="https://blog.csdn.net/guorui_java/article/details/107347754">https://blog.csdn.net/guorui_java/article/details/107347754</a></p>
+</blockquote>
+<h2 id="一、Spring的常用注解"><a href="#一、Spring的常用注解" class="headerlink" title="一、Spring的常用注解"></a>一、Spring的常用注解</h2><h3 id="1、给容器中注入组件"><a href="#1、给容器中注入组件" class="headerlink" title="1、给容器中注入组件"></a>1、给容器中注入组件</h3><p>（1）包扫描+组件标注注解</p>
+<p>@Component：泛指各种组件</p>
+<p>@Controller、@Service、@Repository都可以称为@Component。</p>
+<p>@Controller：控制层</p>
+<p>@Service：业务层</p>
+<p>@Repository：数据访问层</p>
+<p>（2）@Bean</p>
+<p>导入第三方包里面的注解</p>
+<p>（3）@Import</p>
+<p>@Import(要导入到容器中的组件)；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import(&#123;Color.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainConfig2</span> &#123;</span><br><span class="line">	<span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line">	<span class="meta">@Bean(&quot;person&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> Person <span class="title function_">person</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;我是Person&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;素小暖&quot;</span>,<span class="number">25</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@ImportSelector：返回需要导入的组件的全类名数组；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportSelector</span> <span class="keyword">implements</span> <span class="title class_">ImportSelector</span> &#123;</span><br><span class="line">    <span class="comment">//返回值就是导入容器的组件全类目</span></span><br><span class="line">    <span class="comment">// AnnotationMetadata 当前标注@Import注解的类的所有注解信息</span></span><br><span class="line">    <span class="keyword">public</span> String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;</span><br><span class="line">        <span class="comment">//importingClassMetadata.get</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;com.atguigu.bean.Blue&quot;</span>,<span class="string">&quot;com.atguigu.bean.Red&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@ImportBeanDefinitionRegistrar：手动注册bean到容器中；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportBeanDefinitionRegistrar</span> <span class="keyword">implements</span> <span class="title class_">ImportBeanDefinitionRegistrar</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * AnnotationMetadata：当前类的注解信息</span></span><br><span class="line"><span class="comment">    * BeanDefinitionRegistry：BeanDefinition注册类</span></span><br><span class="line"><span class="comment">    * 把所有需要添加到容器中的bean，调用BeanDefinitionRegistry.registerBeanDefinition手动注入</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">definition</span> <span class="operator">=</span> registry.containsBeanDefinition(<span class="string">&quot;com.atguigu.bean.Red&quot;</span>);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">definition2</span> <span class="operator">=</span> registry.containsBeanDefinition(<span class="string">&quot;com.atguigu.bean.Blue&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(definition &amp;&amp; definition2)&#123;</span><br><span class="line">            <span class="comment">//指定bean定义信息（bean的类型，bean的scope）</span></span><br><span class="line">            <span class="type">RootBeanDefinition</span> <span class="variable">rootBeanDefinition</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RootBeanDefinition</span>(RainBow.class);</span><br><span class="line">            <span class="comment">//注册一个bean，指定bean名</span></span><br><span class="line">            registry.registerBeanDefinition(<span class="string">&quot;rainBow&quot;</span>,rootBeanDefinition);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（4）使用spring提供的FactoryBean（工厂Bean）</p>
+<ul>
+<li>默认获取到的是工厂Bean调用getObject创建的对象</li>
+<li>要获取工厂Bean本身，需要在id前面加一个&amp;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ColorFactoryBean <span class="title function_">colorFactoryBean</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ColorFactoryBean</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个spring定义的FactoryBean</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorFactoryBean</span> <span class="keyword">implements</span> <span class="title class_">FactoryBean</span>&lt;Color&gt; &#123;</span><br><span class="line">    <span class="comment">//返回一个Color对象，并将Color添加到容器中</span></span><br><span class="line">    <span class="keyword">public</span> Color <span class="title function_">getObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ColorFactoryBean,getObject()&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Color</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        <span class="keyword">return</span> Color.class;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSingleton</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、注入bean的注解"><a href="#2、注入bean的注解" class="headerlink" title="2、注入bean的注解"></a>2、注入bean的注解</h3><p>@Autowired：由bean提供</p>
+<ul>
+<li>@Autowired可以作用在变量、setter方法、构造函数上；</li>
+<li>有个属性为required，可以配置为false；</li>
+</ul>
+<p>@Inject：由JSR-330提供</p>
+<ul>
+<li>@Inject用法和@Autowired一样。</li>
+</ul>
+<p>@Resource：由JSR-250提供</p>
+<p>@Autowired、@Inject是默认按照类型匹配的，@Resource是按照名称匹配的，@Autowired如果需要按照名称匹配需要和@Qualifier一起使用，@Inject和@Name一起使用。</p>
+<p>@Primary</p>
+<p>让spring进行自动装配的时候，默认使用首选的bean，和@Qualifier一个效果。</p>
+<h3 id="3、-JsonIgnore"><a href="#3、-JsonIgnore" class="headerlink" title="3、@JsonIgnore"></a>3、@JsonIgnore</h3><p>（1）作用</p>
+<p>在json序列化时将java bean中的一些属性忽略掉，序列化和反序列化都受影响。</p>
+<p>（2）使用方法</p>
+<p>一般标记在属性或者方法上，返回的json数据即不包含该属性。</p>
+<p>（3）注解失效</p>
+<p>如果注解失效，可能是因为你使用的是fastJson，尝试使用对应的注解来忽略字段，注解为：@JSONField(serialize &#x3D; false)，使用方法一样。</p>
+<h3 id="4、初始化和销毁方法"><a href="#4、初始化和销毁方法" class="headerlink" title="4、初始化和销毁方法"></a>4、初始化和销毁方法</h3><p>（1）通过@Bean(initMethod&#x3D;”init”,destoryMethod&#x3D;”destory”)方法</p>
+<p>（2）通过bean实现InitializingBean来定义初始化逻辑，DisposableBean定义销毁逻辑</p>
+<p>（3）可以使用JSR250：@PostConstruct：初始化方法；@PreDestory：销毁方法。</p>
+<p>（4）BeanPostProcessor：bean的后置处理器，在bean初始化前后进行一些处理工作</p>
+<p>postProcessBeforeInitialization：在初始化之前工作；</p>
+<p>postProcessAfterInitialization：在初始化工作之后工作；</p>
+<h3 id="5、Java配置类相关注解"><a href="#5、Java配置类相关注解" class="headerlink" title="5、Java配置类相关注解"></a>5、Java配置类相关注解</h3><p>@Configuration</p>
+<p>声明当前类为配置类；</p>
+<p>@Bean</p>
+<p>注解在方法上，声明当前方法的返回值为一个bean，替代xml中的方式；</p>
+<p>@ComponentScan</p>
+<p>用于对Component进行扫描；</p>
+<h3 id="6、切面（AOP）相关注解"><a href="#6、切面（AOP）相关注解" class="headerlink" title="6、切面（AOP）相关注解"></a>6、切面（AOP）相关注解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JinXYan/article/details/89302126">Spring AOP详细介绍</a></p>
+<p>Spring支持AspectJ的注解式切面编程。</p>
+<p>@Aspect 声明一个切面</p>
+<p>@After 在方法执行之后执行（方法上）</p>
+<p>@Before 在方法执行之前执行（方法上）</p>
+<p>@Around 在方法执行之前与之后执行（方法上）</p>
+<p>@PointCut 声明切点</p>
+<p>在java配置类中使用@EnableAspectJAutoProxy注解开启Spring对AspectJ代理的支持</p>
+<h3 id="7、-Bean的属性支持"><a href="#7、-Bean的属性支持" class="headerlink" title="7、@Bean的属性支持"></a>7、@Bean的属性支持</h3><p>@Scope设置类型包括：</p>
+<p>设置Spring容器如何新建Bean实例（方法上，得有@Bean）</p>
+<p>① Singleton</p>
+<p>（单例,一个Spring容器中只有一个bean实例，默认模式）,</p>
+<p>② Protetype</p>
+<p>（每次调用新建一个bean）,</p>
+<p>③ Request</p>
+<p>（web项目中，给每个http request新建一个bean）,</p>
+<p>④ Session</p>
+<p>（web项目中，给每个http session新建一个bean）,</p>
+<p>⑤ GlobalSession</p>
+<p>（给每一个 global http session新建一个Bean实例）</p>
+<h3 id="8、-Value注解"><a href="#8、-Value注解" class="headerlink" title="8、@Value注解"></a>8、@Value注解</h3><p>（1）支持如下方式的注入：</p>
+<ul>
+<li>注入普通字符</li>
+<li>注入操作系统属性</li>
+<li>注入表达式结果</li>
+<li>注入其它bean属性</li>
+<li>注入文件资源</li>
+<li>注入网站资源</li>
+<li>注入配置文件</li>
+</ul>
+<p>（2）@Value三种情况的用法。</p>
+<ol>
+<li>${}是去找外部配置的参数，将值赋过来</li>
+<li>#{}是SpEL表达式，去寻找对应变量的内容</li>
+<li>#{}直接写字符串就是将字符串的值注入进去</li>
+</ol>
+<h3 id="9、环境切换"><a href="#9、环境切换" class="headerlink" title="9、环境切换"></a>9、环境切换</h3><p>@Profile</p>
+<p>指定组件在哪个环境的情况下才能被注册到容器中，不指定，任何环境下都能注册这个组件。</p>
+<p>@Conditional</p>
+<p>通过实现Condition接口，并重写matches方法，从而决定该bean是否被实例化。</p>
+<h3 id="10、异步相关"><a href="#10、异步相关" class="headerlink" title="10、异步相关"></a>10、异步相关</h3><p>@EnableAsync</p>
+<p>配置类中通过此注解开启对异步任务的支持；</p>
+<p>@Async</p>
+<p>在实际执行的bean方法使用该注解来声明其是一个异步任务（方法上或类上所有的方法都将异步，需要@EnableAsync开启异步任务）</p>
+<h3 id="11、定时任务相关"><a href="#11、定时任务相关" class="headerlink" title="11、定时任务相关"></a>11、定时任务相关</h3><p>@EnableScheduling</p>
+<p>在配置类上使用，开启计划任务的支持（类上）</p>
+<p>@Scheduled</p>
+<p>来申明这是一个任务，包括cron,fixDelay,fixRate等类型（方法上，需先开启计划任务的支持）</p>
+<h3 id="12、Enable-注解说明"><a href="#12、Enable-注解说明" class="headerlink" title="12、Enable***注解说明"></a>12、Enable***注解说明</h3><p>这些注解主要是用来开启对xxx的支持：</p>
+<ul>
+<li>@EnableAspectAutoProxy：开启对AspectJ自动代理的支持；</li>
+<li>@EnableAsync：开启异步方法的支持；</li>
+<li>@EnableScheduling：开启计划任务的支持；</li>
+<li>@EnableWebMvc：开启web MVC的配置支持；</li>
+<li>@EnableConfigurationProperties：开启对@ConfigurationProperties注解配置Bean的支持；</li>
+<li>@EnableJpaRepositories：开启对SpringData JPA Repository的支持；</li>
+<li>@EnableTransactionManagement：开启注解式事务的支持；</li>
+<li>@EnableCaching：开启注解式的缓存支持；</li>
+</ul>
+<h3 id="13、测试相关注解"><a href="#13、测试相关注解" class="headerlink" title="13、测试相关注解"></a>13、测试相关注解</h3><p>@RunWith</p>
+<p>运行器，Spring中通常用于对JUnit的支持</p>
+<p>@ContextConfiguration</p>
+<p>用来加载配置配置文件，其中classes属性用来加载配置类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="meta">@ContextConfiguration(locations = &#123;&quot;classpath*:/*.xml&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CDPlayerTest</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@ContextConfiguration这个注解通常与@RunWith(SpringJUnit4ClassRunner.class)联合使用用来测试。</p>
+<p>@ContextConfiguration括号里的locations &#x3D; {“classpath*:&#x2F;*.xml”}就表示将classpath路径里所有的xml文件都包括进来，自动扫描的bean就可以拿到，此时就可以在测试类中使用@Autowired注解来获取之前自动扫描包下的所有bean。</p>
+<h3 id="14、-EqualsAndHashCode"><a href="#14、-EqualsAndHashCode" class="headerlink" title="14、@EqualsAndHashCode"></a>14、@EqualsAndHashCode</h3><p>任意类的定义都可以添加<code>@EqualsAndHashCode</code>注解，让lombok帮你生成<code>equals(Object other)</code>和<code>hashCode()</code>方法的实现。默认情况下会使用非静态和非transient型字段来生成，但是你也通过在字段上添加 @EqualsAndHashCode.Include 或者@EqualsAndHashCode.Exclude 修改你使用的字段（甚至指定各种方法的输出）。或者你也可以通过在类上使用 @EqualsAndHashCode(onlyExplicitlyIncluded &#x3D; true) ，且在特定字段或特定方法上添加 @EqualsAndHashCode.Include 来指定他们。</p>
+<p>如果将<code>@EqualsAndHashCode</code>添加到继承于另一个类的类上，这个功能会有点棘手。一般情况下，为这样的类自动生成<code>equals</code>和<code>hashCode</code>方法是一个坏思路，因为超类也有定义了一些字段，他们也需要equals&#x2F;hashCode方法但是不会自动生成。通过设置callSuper&#x3D;true，可以在生成的<code>equals</code>和<code>hashCode</code>方法里包含超类的方法。对于<code>hashCode</code>，·super.hashCode()·会被包含在hash算法内，而对于<code>equals</code>，如果超类实现认为它与传入的对象不一致则会返回false。注意：并非所有的<code>equals</code>都能正确的处理这样的情况。然而刚好lombok可以，若超类也使用lombok来生成equals方法，那么你可以安全的使用它的equals方法。如果你有一个明确的超类, 你得在callSuper上提供一些值来表示你已经斟酌过，要不然的话就会产生一条警告信息。</p>
+<p>当你的类没有继承至任何类（非<code>java.lang.Object</code>, 当然任何类都是继承于Object类的），而你却将callSuer置为true, 这会产生编译错误（译者注： java: Generating equals&#x2F;hashCode with a supercall to java.lang.Object is pointless. ）。因为这会使得生成的<code>equals</code>和<code>hashCode</code>方法实现只是简单的继承至Object类的方法，只有相同的对象并且相同的hashCode才会判定他们相等。若你的类继承至另一个类又没有设置callSuper, 则会产品一个告警，因为除非超类没有（或者没有跟相等相关的）字段，否则lombok无法为你生成考虑超类声明字段的实现。</p>
+<h3 id="15、XmlAccessorType"><a href="#15、XmlAccessorType" class="headerlink" title="15、XmlAccessorType"></a>15、XmlAccessorType</h3><p>类级别的注解</p>
+<p>定义这个类中何种类型需要映射到XML。</p>
+<ol>
+<li>XmlAccessType.FIELD：映射这个类中的所有字段到XML</li>
+<li>XmlAccessType.PROPERTY：映射这个类中的属性（get&#x2F;set方法）到XML</li>
+<li>XmlAccessType.PUBLIC_MEMBER：将这个类中的所有public的field或property同时映射到XML（默认）</li>
+<li>XmlAccessType.NONE：不映射</li>
+</ol>
+<h3 id="16、-SuppressWarnings"><a href="#16、-SuppressWarnings" class="headerlink" title="16、@SuppressWarnings"></a>16、@SuppressWarnings</h3><p>Suppress  抑制；镇压；废止 Warnings警告 </p>
+<p>@SuppressWarnings(“resource”)是J2SE 提供的一个批注。该批注的作用是给编译器一条指令，告诉它对被批注的代码元素内部的某些警告保持静默。</p>
+<p>@SuppressWarnings 批注允许您选择性地取消特定代码段（即，类或方法）中的警告。其中的想法是当您看到警告时，您将调查它，如果您确定它不是问题，您就可以添加一个 @SuppressWarnings 批注，以使您不会再看到警告。<br>虽然它听起来似乎会屏蔽潜在的错误，但实际上它将提高代码安全性，因为它将防止您对警告无动于衷 — 您看到的每一个警告都将值得注意。</p>
+<h2 id="二、SpringMVC常用注解"><a href="#二、SpringMVC常用注解" class="headerlink" title="二、SpringMVC常用注解"></a>二、SpringMVC常用注解</h2><h3 id="1、-EnableWebMvc"><a href="#1、-EnableWebMvc" class="headerlink" title="1、@EnableWebMvc"></a>1、@EnableWebMvc</h3><p>在配置类中开启Web MVC的配置支持。</p>
+<h3 id="2、-Controller"><a href="#2、-Controller" class="headerlink" title="2、@Controller"></a>2、@Controller</h3><h3 id="3、-RequestMapping"><a href="#3、-RequestMapping" class="headerlink" title="3、@RequestMapping"></a>3、@RequestMapping</h3><p>用于映射web请求，包括访问路径和参数。</p>
+<h3 id="4、-ResponseBody"><a href="#4、-ResponseBody" class="headerlink" title="4、@ResponseBody"></a>4、@ResponseBody</h3><p>支持将返回值放到response内，而不是一个页面，通常用户返回json数据。</p>
+<h3 id="5、-RequestBody"><a href="#5、-RequestBody" class="headerlink" title="5、@RequestBody"></a>5、@RequestBody</h3><p>允许request的参数在request体中，而不是在直接连接的地址后面。（放在参数前）</p>
+<h3 id="6、-PathVariable"><a href="#6、-PathVariable" class="headerlink" title="6、@PathVariable"></a>6、@PathVariable</h3><p>用于接收路径参数，比如@RequestMapping(“&#x2F;hello&#x2F;{name}”)声明的路径，将注解放在参数前，即可获取该值，通常作为Restful的接口实现方法。</p>
+<h3 id="7、-RestController"><a href="#7、-RestController" class="headerlink" title="7、@RestController"></a>7、@RestController</h3><p>该注解为一个组合注解，相当于@Controller和@ResponseBody的组合，注解在类上，意味着，该Controller的所有方法都默认加上了@ResponseBody。</p>
+<h3 id="8、-ControllerAdvice"><a href="#8、-ControllerAdvice" class="headerlink" title="8、@ControllerAdvice"></a>8、@ControllerAdvice</h3><ul>
+<li>全局异常处理</li>
+<li>全局数据绑定</li>
+<li>全局数据预处理</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/guorui_java/article/details/106883939">ControllerAdvice的常用场景</a></p>
+<h3 id="9、-ExceptionHandler"><a href="#9、-ExceptionHandler" class="headerlink" title="9、@ExceptionHandler"></a>9、@ExceptionHandler</h3><p>用于全局处理控制器里的异常。</p>
+<h3 id="10、-InitBinder"><a href="#10、-InitBinder" class="headerlink" title="10、@InitBinder"></a>10、@InitBinder</h3><p>用来设置WebDataBinder，WebDataBinder用来自动绑定前台请求参数到Model中。</p>
+<h3 id="11、-ModelAttribute"><a href="#11、-ModelAttribute" class="headerlink" title="11、@ModelAttribute"></a>11、@ModelAttribute</h3><p>（1）@ModelAttribute注释方法 </p>
+<p>如果把@ModelAttribute放在方法的注解上时，代表的是：该Controller的所有方法在调用前，先执行此@ModelAttribute方法。可以把这个@ModelAttribute特性，应用在BaseController当中，所有的Controller继承BaseController，即可实现在调用Controller时，先执行@ModelAttribute方法。比如权限的验证（也可以使用Interceptor）等。</p>
+<p>（2）@ModelAttribute注释一个方法的参数 </p>
+<p>当作为方法的参数使用，指示的参数应该从模型中检索。如果不存在，它应该首先实例化，然后添加到模型中，一旦出现在模型中，参数字段应该从具有匹配名称的所有请求参数中填充。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106195653897.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1b3J1aV9qYXZh,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210106195702208.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1b3J1aV9qYXZh,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>hellorWord方法的userLogin参数的值来源于getUserLogin()方法中的model属性。</p>
+<h3 id="12、-Transactional"><a href="#12、-Transactional" class="headerlink" title="12、@Transactional"></a>12、@Transactional</h3><p>@Transactional 注解放在类级别时，表示所有该类的公共方法都配置相同的事务属性信息。EmployeeService 的所有方法都支持事务并且是只读。当类级别配置了@Transactional，方法级别也配置了@Transactional，应用程序会以方法级别的事务属性信息来管理事务，换言之，方法级别的事务属性信息会覆盖类级别的相关配置信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(propagation= Propagation.SUPPORTS,readOnly=true)</span></span><br><span class="line"><span class="meta">@Service(value =&quot;employeeService&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmployeeService</span></span><br></pre></td></tr></table></figure>
+
+<p>@Transactional 注解的属性信息</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">当在配置文件中有多个 TransactionManager , 可以用该属性指定选择哪个事务管理器。</td>
+</tr>
+<tr>
+<td align="left">propagation</td>
+<td align="left">事务的传播行为，默认值为 REQUIRED。</td>
+</tr>
+<tr>
+<td align="left">isolation</td>
+<td align="left">事务的隔离度，默认值采用 DEFAULT。</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">事务的超时时间，默认值为-1。如果超过该时间限制但事务还没有完成，则自动回滚事务。</td>
+</tr>
+<tr>
+<td align="left">read-only</td>
+<td align="left">指定事务是否为只读事务，默认值为 false；为了忽略那些不需要事务的方法，比如读取数据，可以设置 read-only 为 true。</td>
+</tr>
+<tr>
+<td align="left">rollback-for</td>
+<td align="left">用于指定能够触发事务回滚的异常类型，如果有多个异常类型需要指定，各类型之间可以通过逗号分隔。</td>
+</tr>
+<tr>
+<td align="left">no-rollback- for</td>
+<td align="left">抛出 no-rollback-for 指定的异常类型，不回滚事务。</td>
+</tr>
+</tbody></table>
+<h2 id="三、其它注解"><a href="#三、其它注解" class="headerlink" title="三、其它注解"></a>三、其它注解</h2><h3 id="1、-JsonIgnore"><a href="#1、-JsonIgnore" class="headerlink" title="1、@JsonIgnore"></a>1、@JsonIgnore</h3><p>（1）作用</p>
+<p>在json序列化时将java bean中的一些属性忽略掉，序列化和反序列化都受影响。</p>
+<p>（2）使用方法</p>
+<p>一般标记在属性或者方法上，返回的json数据即不包含该属性。</p>
+<p>（3）注解失效</p>
+<p>如果注解失效，可能是因为你使用的是fastJson，尝试使用对应的注解来忽略字段，注解为：@JSONField(serialize &#x3D; false)，使用方法一样。</p>
+<h3 id="2、-Schema"><a href="#2、-Schema" class="headerlink" title="2、@Schema"></a>2、@Schema</h3><p>@schema注解标注在class上，表示此类对应的数据库表对应的schema。</p>
+<p>可以用如下语句判断某个实体类上是否带有@schema注解，从而得到schema。</p>
+<blockquote>
+<p>bean.getClass().isAnnotationPresent(Schema.class)</p>
+</blockquote>
+<h2 id="四、json常用注解"><a href="#四、json常用注解" class="headerlink" title="四、json常用注解"></a>四、json常用注解</h2><h3 id="1、-JsonIgnoreProperties"><a href="#1、-JsonIgnoreProperties" class="headerlink" title="1、@JsonIgnoreProperties"></a>1、@JsonIgnoreProperties</h3><p>此注解是类注解，作用是json序列化时将java bean中的一些属性忽略掉，序列化和反序列化都受影响。</p>
+<p>写法将此标签加在user类的类名上 ，可以多个属性也可以单个属性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成json时将name和age属性过滤</span></span><br><span class="line"><span class="meta">@JsonIgnoreProperties(&#123;&quot;name&quot;&#125;,&#123;&quot;age&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span>  <span class="title class_">user</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>  String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、-JsonIgnore"><a href="#2、-JsonIgnore" class="headerlink" title="2、@JsonIgnore"></a>2、@JsonIgnore</h3><p>此注解用于属性或者方法上（最好是属性上），作用和上面的@JsonIgnoreProperties一样。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成json 时不生成age 属性</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">user</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">	<span class="meta">@JsonIgnore</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、-JsonFormat"><a href="#3、-JsonFormat" class="headerlink" title="3、@JsonFormat"></a>3、@JsonFormat</h3><p>此注解用于属性或者方法上（最好是属性上），可以方便的把Date类型直接转化为我们想要的模式，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">    <span class="meta">@JsonFormat(pattern = “yyyy-MM-dd HH-mm-ss”)</span></span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、-JsonSerialize"><a href="#4、-JsonSerialize" class="headerlink" title="4、@JsonSerialize"></a>4、@JsonSerialize</h3><p>此注解用于属性或者getter方法上，用于在序列化时嵌入我们自定义的代码，比如序列化一个double时在其后面限制两位小数点。</p>
+<h3 id="5、-JsonDeserialize"><a href="#5、-JsonDeserialize" class="headerlink" title="5、@JsonDeserialize"></a>5、@JsonDeserialize</h3><p>此注解用于属性或者setter方法上，用于在反序列化时可以嵌入我们自定义的代码，类似于上面的@JsonSerialize</p>
+<h3 id="6、-Transient"><a href="#6、-Transient" class="headerlink" title="6、@Transient"></a>6、@Transient</h3><p>如果一个属性并非数据库表的字段映射，就务必将其标示为@Transient，否则ORM框架默认其注解为@Basic；</p>
+<h3 id="7、-JsonIgnoreType"><a href="#7、-JsonIgnoreType" class="headerlink" title="7、@JsonIgnoreType"></a>7、@JsonIgnoreType</h3><p>标注在类上，当其他类有该类作为属性时，该属性将被忽略。</p>
+<h3 id="8、-JsonProperty"><a href="#8、-JsonProperty" class="headerlink" title="8、@JsonProperty"></a>8、@JsonProperty</h3><p>@JsonProperty 可以指定某个属性和json映射的名称。例如我们有个json字符串为{“user_name”:”aaa”}，<br>而java中命名要遵循驼峰规则，则为userName，这时通过@JsonProperty 注解来指定两者的映射规则即可。这个注解也比较常用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SomeEntity</span> &#123;</span><br><span class="line">    <span class="meta">@JsonProperty(&quot;user_name&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9、只在序列化情况下生效的注解"><a href="#9、只在序列化情况下生效的注解" class="headerlink" title="9、只在序列化情况下生效的注解"></a>9、只在序列化情况下生效的注解</h3><p>@JsonPropertyOrder</p>
+<p>在将 java pojo 对象序列化成为 json 字符串时，使用 @JsonPropertyOrder 可以指定属性在 json 字符串中的顺序。</p>
+<p>@JsonInclude</p>
+<p>在将 java pojo 对象序列化成为 json 字符串时，使用 @JsonInclude 注解可以控制在哪些情况下才将被注解的属性转换成 json，例如只有属性不为 null 时。</p>
+<p>@JsonInclude(JsonInclude.Include.NON_NULL)</p>
+<p>这个注解放在类头上，返给前端的json里就没有null类型的字段，即实体类与json互转的时候 属性值为null的不参与序列化。<br>另外还有很多其它的范围，例如 NON_EMPTY、NON_DEFAULT等</p>
+<h3 id="10、在反序列化情况下生效的注解"><a href="#10、在反序列化情况下生效的注解" class="headerlink" title="10、在反序列化情况下生效的注解"></a>10、在反序列化情况下生效的注解</h3><p>@JsonSetter</p>
+<p>@JsonSetter 标注于 setter 方法上，类似 @JsonProperty ，也可以解决 json 键名称和 java pojo 字段名称不匹配的问题。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/Markdown/">Markdown</a><a class="post-meta__tags" href="/tags/IDEA/">IDEA</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/06/04/17.easyExcel%E4%BD%BF%E7%94%A8/" title="【Java】EasyExcel使用"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-04</div><div class="title">【Java】EasyExcel使用</div></div></a></div><div><a href="/2022/03/08/2.Thread&ThreadPool/" title="【Java】Thread &amp;&amp; ThreadPool"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-08</div><div class="title">【Java】Thread &amp;&amp; ThreadPool</div></div></a></div><div><a href="/2022/06/05/20.localDateTime/" title="【Java】LocalDateTime相关使用"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-05</div><div class="title">【Java】LocalDateTime相关使用</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Spring%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-text">一、Spring的常用注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%BB%99%E5%AE%B9%E5%99%A8%E4%B8%AD%E6%B3%A8%E5%85%A5%E7%BB%84%E4%BB%B6"><span class="toc-text">1、给容器中注入组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%B3%A8%E5%85%A5bean%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="toc-text">2、注入bean的注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81-JsonIgnore"><span class="toc-text">3、@JsonIgnore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%94%80%E6%AF%81%E6%96%B9%E6%B3%95"><span class="toc-text">4、初始化和销毁方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81Java%E9%85%8D%E7%BD%AE%E7%B1%BB%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">5、Java配置类相关注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%88%87%E9%9D%A2%EF%BC%88AOP%EF%BC%89%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">6、切面（AOP）相关注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81-Bean%E7%9A%84%E5%B1%9E%E6%80%A7%E6%94%AF%E6%8C%81"><span class="toc-text">7、@Bean的属性支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81-Value%E6%B3%A8%E8%A7%A3"><span class="toc-text">8、@Value注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2"><span class="toc-text">9、环境切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%BC%82%E6%AD%A5%E7%9B%B8%E5%85%B3"><span class="toc-text">10、异步相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E3%80%81%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9B%B8%E5%85%B3"><span class="toc-text">11、定时任务相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E3%80%81Enable-%E6%B3%A8%E8%A7%A3%E8%AF%B4%E6%98%8E"><span class="toc-text">12、Enable***注解说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13%E3%80%81%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">13、测试相关注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14%E3%80%81-EqualsAndHashCode"><span class="toc-text">14、@EqualsAndHashCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15%E3%80%81XmlAccessorType"><span class="toc-text">15、XmlAccessorType</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16%E3%80%81-SuppressWarnings"><span class="toc-text">16、@SuppressWarnings</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81SpringMVC%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-text">二、SpringMVC常用注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81-EnableWebMvc"><span class="toc-text">1、@EnableWebMvc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81-Controller"><span class="toc-text">2、@Controller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81-RequestMapping"><span class="toc-text">3、@RequestMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81-ResponseBody"><span class="toc-text">4、@ResponseBody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81-RequestBody"><span class="toc-text">5、@RequestBody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81-PathVariable"><span class="toc-text">6、@PathVariable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81-RestController"><span class="toc-text">7、@RestController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81-ControllerAdvice"><span class="toc-text">8、@ControllerAdvice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81-ExceptionHandler"><span class="toc-text">9、@ExceptionHandler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81-InitBinder"><span class="toc-text">10、@InitBinder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E3%80%81-ModelAttribute"><span class="toc-text">11、@ModelAttribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E3%80%81-Transactional"><span class="toc-text">12、@Transactional</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E5%AE%83%E6%B3%A8%E8%A7%A3"><span class="toc-text">三、其它注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81-JsonIgnore"><span class="toc-text">1、@JsonIgnore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81-Schema"><span class="toc-text">2、@Schema</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81json%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-text">四、json常用注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81-JsonIgnoreProperties"><span class="toc-text">1、@JsonIgnoreProperties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81-JsonIgnore"><span class="toc-text">2、@JsonIgnore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81-JsonFormat"><span class="toc-text">3、@JsonFormat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81-JsonSerialize"><span class="toc-text">4、@JsonSerialize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81-JsonDeserialize"><span class="toc-text">5、@JsonDeserialize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81-Transient"><span class="toc-text">6、@Transient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81-JsonIgnoreType"><span class="toc-text">7、@JsonIgnoreType</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81-JsonProperty"><span class="toc-text">8、@JsonProperty</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E5%8F%AA%E5%9C%A8%E5%BA%8F%E5%88%97%E5%8C%96%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%9F%E6%95%88%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="toc-text">9、只在序列化情况下生效的注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%9C%A8%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%9F%E6%95%88%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="toc-text">10、在反序列化情况下生效的注解</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 一只草履虫</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://fastly.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'bBtQVBbzW7eDs5d0zHYEbyYi-gzGzoHsz',
+      appKey: '8JbhJ2dhlVdotOn2sS6AXotb',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://fastly.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="255,255,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="Java,C,C艹,C#,Python,GO,PHP,Ruby,SQL,Curl,JavaScript,HTML,XML,R,Lua,Scala,Erlang,Perl,Swift,Objective-C,Visual Basic,Lisp" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
