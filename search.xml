@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>标题写在这儿</title>
+      <title>Spring的常用注解</title>
       <link href="/2022/07/07/33.SSM%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"/>
       <url>/2022/07/07/33.SSM%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</url>
       
@@ -22,9 +22,11 @@
             
             <tag> Java </tag>
             
-            <tag> Markdown </tag>
+            <tag> Spring </tag>
             
-            <tag> IDEA </tag>
+            <tag> SpringMVC </tag>
+            
+            <tag> Annotation </tag>
             
         </tags>
       
@@ -765,9 +767,9 @@
       
         <tags>
             
-            <tag> IDEA </tag>
-            
             <tag> 软件 </tag>
+            
+            <tag> IDEA </tag>
             
         </tags>
       
