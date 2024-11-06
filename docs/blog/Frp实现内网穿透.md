@@ -5,7 +5,7 @@ tags:
   - frp
 createTime: 2023/05/06
 cover: /cover/cover_frp.png
-excerpt: 通过frp内网穿透解决外网访问内网服务器
+excerpt: 通过frp内网穿透解决外网访问内网服务器，需要一台公网服务器
 permalink: /article/bd79zupz/
 ---
 
@@ -16,7 +16,7 @@ permalink: /article/bd79zupz/
 >
 > 内网穿透方式：
 >
-> - 自建：[frp](https://gofrp.org/docs/)（推荐），[localhost.run](http://localhost.run/)，[gost](https://github.com/ginuerzh/gost)，[nps](https://ehang-io.github.io/nps/#/?id=nps)
+> - 自建：[frp](https://gofrp.org/zh-cn/docs/)（推荐），[localhost.run](http://localhost.run/)，[gost](https://github.com/ginuerzh/gost)，[nps](https://ehang-io.github.io/nps/#/?id=nps)
 > - 购买：花生壳，[pubyun](http://www.pubyun.com/)，[ngrok](https://www.ngrok.cc/)，[路由侠](https://www.luyouxia.com/)
 >
 > 准备：一台Ubuntu系统主机，一台有公网IP的主机
@@ -30,238 +30,75 @@ permalink: /article/bd79zupz/
 
 ## 2. frp压缩包文件说明
 
-1. [下载frp文件包](https://github.com/fatedier/frp/releases)  
-2. [frp文档](https://gofrp.org/docs/examples/)
+1. [下载frp文件包](https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz)  
+2. [frp文档](https://gofrp.org/zh-cn/docs)
 
 每个压缩包解压后都包含以下文件和一个systemd文件夹：
 
 - frpc —— 客户端可执行二进制文件
-- frpc_full.ini —— 包含全部配置项的客户端配置文件
-- frpc.ini —— 客户端使用的配置文件，包含最简配置
+- frpc.toml —— 客户端使用的配置文件，包含最简配置
 - frps —— 服务端可执行二进制文件
-- frps_full.ini —— 包含全部配置项的服务端配置文件
-- frps.ini —— 服务端使用的配置文件，包含最简配置
-- systemd —— 文件夹，用于将frpc和frps添加为服务的配置，linux下使用systemd作为守护程序、mac os使用launchd作为守护程序
+- frps.toml —— 包含全部配置项的服务端配置文件
 
-注：服务端只需用到frp_0.46.1_linux_amd64目录下的frps相关文件，本机（客户端）只需用到frp_0.46.1_linux_amd64目录下的frpc相关文件
+注：服务端（外网）只需用到frp_0.61.0_linux_amd64目录下的frps相关文件，客户端（内网）只需用到frp_0.61.0_linux_amd64目录下的frpc相关文件
 
 ## 3. 服务端配置(公网服务器)
 
 ### 3.1 解压
 
 ```bash
-# 一般放到opt目录下
-cd /opt
+# 切换目录
+mkdir -r /data/frp
+
+cd /data/frp
 
 # 解压
-tar -zxvf frp_0.46.0_linux_amd64.tar.gz
+tar -zxvf frp_0.61.0_linux_amd64.tar.gz
 
-# 编辑配置文件，注意是frps
-vim frps.ini
+# 编辑配置文件，注意是 frps
+vim /data/frp/frp_0.61.0_linux_amd64/frps.toml
 ```
 
 ### 3.2 配置文件
 
 ```sh
-# 输入如下内容
-[common]
-# frp监听的端口，默认是7000，可以改成其他的
-bind_port = 7000
+# 监听的端口，默认是7000
+bindPort = 10001
 
-# frp管理后台端口，请按自己需求更改
-dashboard_port = 7500
+# http 穿透端口
+vhostHTTPPort = 9996
+# https 穿透端口
+vhostHTTPSPort = 9997
 
-# frp管理后台用户名和密码，请改成自己的
-dashboard_user = xxx
-dashboard_pwd = xxxx
+# token在客户端会用到,客户端frpc和服务端frps配置文件中配置相同的token
+auth.token = "token2333"
 
-# token在客户端会用到
-token = frp_token
-
-# http穿透端口
-vhost_http_port = 7002
-# https穿透端口
-vhost_https_port = 7003
-
-# 最大连接池大小
-max_pool_count = 50
-
-# 是否提供 Prometheus 监控接口，需要同时启用了 Dashboard 才会生效
-enable_prometheus = true
+# 后台管理: 界面 http://[server addr]:9998 访问 Dashboard 
+# 默认为 127.0.0.1，如果需要公网访问，需要修改为 0.0.0.0
+webServer.addr = "0.0.0.0"
+# 后台管理: 端口
+webServer.port = 9998
+# 后台管理: 用户名和密码
+webServer.user = "user1"
+webServer.password = "pwd123"
 
 # frp日志配置
-log_file = /var/log/frps.log
-log_level = info
-log_max_days = 3
+log.to = "/data/logs/frp/frps.log"
+log.level = "info"
+log.maxDays = 7
 
-# 注册的域名
-# subdomain_host = test.xyz
-# privilege_mode = true
 ```
 
-### 3.3 启动
+### 3.3 启动服务端
+**使用 systemd 来管理 frps 服务，包括启动、停止、配置后台运行和设置开机自启动。**
 
-```bash
-# 前台启动
-./frps -c ./frps.ini
-
-# 后台启动
-./frps -c ./frps.ini &
-```
-
-## 4. 客户端配置(内网服务器)
-
-### 4.1 解压
-
-```bash
-# 一般放到opt目录下
-cd /opt
-
-# 解压
-tar -zxvf frp_0.46.0_linux_amd64.tar.gz
-
-# 编辑配置文件, 注意是frpc
-vim frpc.ini
-```
-
-### 4.2 编辑配置文件
-
-```sh
-[common]
-# 公网服务器ip
-server_addr = 143.10.xx.xxx
-# 公网服务端通信端口
-server_port = 7000   
-# 令牌，与公网服务端保持一致
-token = frp_token
-tcp_mux = true
-
-# 日志相关
-log_file = /var/log/frps.log
-log_level = info
-log_max_days = 3
-# 服务器与客户端时间相差15min会连接失败，0表示不验证
-authentication_timeout = 0
-
-# 添加ssh节点 
-[ssh]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 22
-# 指明由公网服务器的7001端口代理
-remote_port = 7001
-
-[pgsql]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 5432
-remote_port = 7010
-
-[mysql]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 3306
-remote_port = 7011
-
-[redis]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 6379
-remote_port = 7012
-
-[es]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 9200
-remote_port = 7013
-
-[kibana]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 5601
-remote_port = 7014
-
-[mq]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 9876
-remote_port = 7015
-
-[rocketMqConsole]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 8080
-remote_port = 7016
-
-[nacos]
-type = tcp
-local_ip = 192.168.xxx.xxx
-local_port = 8848
-remote_port = 7017
-
-# 添加web节点
-[nacos]                                                 
-type = http
-local_ip = 192.168.xxx.xxx
-# 本地8080端口可以通公网服务器7002端口访问
-local_port = 8180
-# 自定义子域名
-custom_domains = 143.10.xx.xxx
-```
-
-ps：[配置多个http](https://www.yakshare.cn/article/frp-lot-port/)
-
-### 4.3 启动
-
+1.创建frps.service文件：
 ```shell
-# 前台启动
-./frpc -c ./frpc.ini
-
-# 后台启动
-./frpc -c ./frpc.ini &
-```
-
-## 5. systemd管理frp
-
-```shell
-# 配置 frps 开机自启
-sudo chmod 775 /etc/systemd/system/frps_/_frpc.service
-
-systemctl enable frps/frpc
-
-# 启动frp 
-systemctl start frps/frpc
-
-# 停止frp 
-systemctl stop frps/frpc
-
-# 重启frp 
-systemctl restart frps/frpc
-
-# 查看frp状态 
-systemctl status frps/frpc
-```
-
-### 5.1 安装systemd
-
-如Linux服务端上没有安装 systemd，可以使用 yum 或 apt 等命令安装 systemd
-
-```shell
-# yum
-yum install systemd
-# apt
-apt install systemd
-```
-
-### 5.2 创建和编辑 frps.service
-
-#### 服务端：
-
-```shell
-# 创建文件
+# 编辑文件
 vim /etc/systemd/system/frps.service
 
-# 编写如下内容：
+######## 配置内容 ########
+# 服务端开启自启：
 [Unit]
 # 服务名称，可自定义
 Description = frps server
@@ -271,19 +108,113 @@ Wants = network.target
 [Service]
 Type = simple
 # 启动frps的命令，需修改为您的frps的安装路径
-ExecStart = /opt/frp_0.46.0_linux_amd64/frps -c /opt/frp_0.46.0_linux_amd64/frps.ini
+ExecStart = /data/frp/frp_0.61.0_linux_amd64/frps -c /data/frp/frp_0.61.0_linux_amd64/frps.toml
 
 [Install]
 WantedBy = multi-user.target
 ```
-
-#### 客户端：
+2.赋予权限：
 
 ```shell
-# 创建文件
+chmod 775 /etc/systemd/system/frps.service
+
+```
+
+
+3.操作命令：
+```shell
+# 刷新配置
+systemctl daemon-reload  
+
+# 启动frp
+sudo systemctl start frps
+
+# 停止frp
+sudo systemctl stop frps
+
+# 重启frp
+sudo systemctl restart frps
+
+# 查看frp状态
+sudo systemctl status frps
+
+# 设置 frps 开机自启动
+sudo systemctl enable frps
+```
+
+
+## 4. 客户端配置(内网服务器)
+
+### 4.1 解压
+
+```bash
+# 切换目录
+mkdir -r /data/frp
+
+cd /data/frp
+
+# 解压
+tar -zxvf frp_0.61.0_linux_amd64.tar.gz
+
+# 编辑配置文件，注意是 frpc
+vim /data/frp/frp_0.61.0_linux_amd64/frpc.toml
+```
+
+### 4.2 编辑配置文件
+
+```sh
+# 公网服务器ip
+serverAddr = "120.xxx.xxx.xxx"
+# 公网服务端通信端口
+serverPort = 10001   
+# 令牌，与公网服务端保持一致
+auth.token = "token2333"
+
+# 日志相关
+log.to = "/data/logs/frp/frps.log"
+log.level = "info"
+log.maxDays = 7
+
+# 通过 SSH 访问内网机器， frp将请求发送到x.x.x.x:10000的流量转发到内网机器的 22 端口
+[[proxies]]
+name = "ssh"
+type = "tcp"
+localIP = "192.168.100.5"
+localPort = 22
+# 指明由公网服务器的10000端口代理
+remotePort = 10000
+
+
+[[proxies]]
+name = "mysql"
+type = "tcp"
+localIP = "192.168.100.5"
+localPort = 3306
+remotePort = 3306
+
+
+# 添加web节点
+#[[proxies]]  
+#name = "web"
+#type = http
+# 本地8080端口可以通公网服务器7002端口访问
+#localPort = 8180
+# 自定义子域名
+#customDomains = ["120.xxx.xxx.xxx"]
+
+```
+
+
+### 4.3 启动客户端
+
+**使用 systemd 来管理 frps 服务，包括启动、停止、配置后台运行和设置开机自启动。**
+
+1.创建frpc.service文件：
+```shell
+# 编辑文件
 vim /etc/systemd/system/frpc.service
 
-# 编写如下内容：
+######## 配置内容 ########
 [Unit]
 # 服务名称，可自定义
 Description = frpc server
@@ -292,18 +223,43 @@ Wants = network.target
 
 [Service]
 Type = simple
-User=nobody
 Restart=on-failure
 RestartSec=5s
-# 启动frps的命令，需修改为您的frps的安装路径
-ExecStart = /opt/frp_0.46.0_linux_amd64/frpc -c /opt/frp_0.46.0_linux_amd64/frpc.ini
-ExecReload = /opt/frp_0.46.0_linux_amd64/frpc reload -c /opt/frp_0.46.0_linux_amd64/frpc.ini
+# 启动frpc的命令，需修改为您的frpc的安装路径
+ExecStart = /data/frp/frp_0.61.0_linux_amd64/frpc -c /data/frp/frp_0.61.0_linux_amd64/frpc.toml
+ExecReload = /data/frp/frp_0.61.0_linux_amd64/frpc reload -c /data/frp/frp_0.61.0_linux_amd64/frpc.toml
 
 [Install]
 WantedBy = multi-user.target
+
+```
+2.赋予权限：
+```shell
+chmod 775 /etc/systemd/system/frpc.service
 ```
 
-## 重要：避开以下端口
+操作命令:
+```shell
+# 刷新配置
+systemctl daemon-reload  
+
+# 启动frp
+systemctl start frpc
+
+# 停止frp
+systemctl stop frpc
+
+# 重启frp
+systemctl restart frpc
+
+# 查看frp状态
+systemctl status frpc
+
+# 设置 frps 开机自启动
+systemctl enable frpc
+```
+
+## 5. 重要：避开以下端口
 
 ```java
 1, // tcpmux

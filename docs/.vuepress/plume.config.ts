@@ -15,7 +15,8 @@ export default defineThemeConfig({
     // your git repo url
     docsRepo: '',
     docsDir: 'docs',
-    appearance: true,
+    appearance: 'dark',
+    contributors: false,
     profile: {
         //头像链接地址avatar_sby.webp
         avatar: 'avatar_spider.webp',
@@ -30,6 +31,7 @@ export default defineThemeConfig({
     notes,
     social: [
         {icon: 'github', link: '/'},
+        {icon: 'docker', link: '/'},
     ],
 
 
