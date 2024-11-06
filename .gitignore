@@ -1,0 +1,64 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+.flattened-pom.xml
+
+
+# 编译输出
+dist/
+out/
+
+# 依赖管理
+node_modules/
+
+# 开发工具
+.idea/
+.DS_Store
+
+
+
+# 临时文件
+*.log
+*.tmp
+*.swp
+
+# 测试文件
+coverage/
+
+# 其他
+.cache/
+.tmp/
+.temp/
+.next/
+.nyc_output/
