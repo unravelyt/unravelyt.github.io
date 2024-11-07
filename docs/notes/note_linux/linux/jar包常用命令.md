@@ -1,7 +1,7 @@
 ---
 title: 运行Jar包并设置jvm参数
 createTime: 2024/11/07 14:52:46
-permalink: /note_linux/slbprv95
+permalink: /note_linux/slbprv95/
 ---
 
 ## 后台启动jar进程

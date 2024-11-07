@@ -1,7 +1,7 @@
 ---
 title: 常用bash脚本
 createTime: 2024/11/05
-permalink: /note_linux/7wv2tb5s
+permalink: /note_linux/7wv2tb5s/
 ---
 
 ```shell :collapsed-lines=20
