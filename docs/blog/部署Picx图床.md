@@ -22,8 +22,8 @@ cd picx
 
 ```dockerfile
 # build stage
-FROM node:lts-alpine as build-stage
-LABEL maintainer=unravely<xxxx@163.com>
+FROM node:lts-slim as build-stage
+LABEL maintainer=unravely
 
 WORKDIR /app
 COPY package*.json ./

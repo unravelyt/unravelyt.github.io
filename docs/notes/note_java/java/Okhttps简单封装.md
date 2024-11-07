@@ -3,7 +3,7 @@ title: Okhttps简单封装
 tags:
   - Java
 createTime: 2023/01/15
-permalink: /code/tuuncv26/
+permalink: /note_java/tuuncv26/
 ---
 
 

@@ -20,14 +20,21 @@ permalink: /article/yuubz445/
 ## 1. [JsDelivr](https://www.jsdelivr.com)
 
 （1）GitHub原地址：
-`
+```
 https://raw.githubusercontent.com/unravelyt/image-hosting/master/base_img/avatar.4zr2jgjmhq80.webp
-`
+
+```
 
 （2）替换后：
-经常失效不推荐：`https://cdn.jsdelivr.net/gh/unravelyt/image-hosting**@**master/base_img/avatar.4zr2jgjmhq80.webp`
+经常失效不推荐：
+```
+https://cdn.jsdelivr.net/gh/unravelyt/image-hosting**@**master/base_img/avatar.4zr2jgjmhq80.webp
+```
 
-推荐使用：`https://fastly.jsdelivr.net/gh/unravelyt/image-hosting@master/2022/SecurityContextHolder.637wmh9seyg0.png`
+推荐使用：
+```
+https://fastly.jsdelivr.net/gh/unravelyt/image-hosting@master/2022/SecurityContextHolder.637wmh9seyg0.png
+```
 
 
 （3）替换规则：
@@ -37,7 +44,6 @@ https://raw.githubusercontent.com/unravelyt/image-hosting/master/base_img/avatar
 对应关系：
 
 ```
-
 unravelyt = GitHub用户id
 
 image-hosting = 仓库名称
@@ -47,7 +53,6 @@ master = 仓库分支
 base_img = 文件夹名称
 
 avatar.4zr2jgjmhq80.webp = 文件名称
-
 ```
 
 将`https://raw.githubusercontent.com/`替换为`https://cdn.jsdelivr.net/gh/` 或者`https://fastly.jsdelivr.net/gh/`
@@ -66,22 +71,16 @@ raw.sevencdn.com` 国内cdn，但是因为滥用增加了白名单限制
 `raw.githubusercontents.com`为中国香港cdn节点，国内访问速度也是很不错的，但是也因为滥用进行了限速。
 
 
-
 由于滥用，现对 raw.githubusercontents.com 进行限速，策略如下：
-
- 
 
 - 小于 1M 的文件不限速
 - 超过 1M 的文件，超过部分限速 100K/s
   若滥用情况继续，则**未来**采用如下限速策略：
 - 限速 10K/s
 
-
-
 替换规则
 
-
-
+```
 三个域名替换规则，将 raw.githubusercontent.com 替换为
 
 **raw.sevencdn.com**
@@ -89,6 +88,9 @@ raw.sevencdn.com` 国内cdn，但是因为滥用增加了白名单限制
 或**raw.staticdn.net**
 
 或**raw.githubusercontents.com** 即可加速。
+```
+
+
 
 ## 3. [91chi.fun](https://github.91chi.fun/)
 
@@ -98,20 +100,21 @@ raw.sevencdn.com` 国内cdn，但是因为滥用增加了白名单限制
 
 （1）GitHub原地址：
 
+```
 https://raw.githubusercontent.com/unravelyt/image-hosting/master/base_img/icon1.webp
+```
 
 
 
 （2）替换后：
 
-[**https://github.91chi.fun**](https://github.91chi.fun)/https://raw.githubusercontent.com/unravelyt/image-hosting/master/base_img/icon1.webp
-
-
+```
+https://github.91chi.fun/https://raw.githubusercontent.com/unravelyt/image-hosting/master/base_img/icon1.webp
+```
 
 （3）替换规则：
 
 直接在地址前面加上`https://github.91chi.fun/`
-
 
 
 备选：
@@ -125,21 +128,19 @@ https://gh.api.99988866.xyz
 
 也可以访问网站输入地址：https://github.91chi.fun/
 
-
-
 ## 4. [staticaly](https://www.staticaly.com/)
 
 （1）GitHub原地址：
 
+```text
 https://raw.githubusercontent.com/unravelyt/image-hosting/master/base_img/icon1.webp
-
-
+```
 
 （2）替换后：
 
-[**https://cdn.staticaly.com/gh**](https://cdn.staticaly.com/gh)/unravelyt/image-hosting/master/base_img/icon1.webp
-
-
+```text
+https://cdn.staticaly.com/gh/unravelyt/image-hosting/master/base_img/icon1.webp
+```
 
 （3）替换规则：
 
@@ -149,22 +150,17 @@ GitHub CDN
 https://cdn.staticaly.com/gh/:user/:repo/:tag/:file
 ```
 
-
-
 GitLab CDN
 
 ```plain
 https://cdn.staticaly.com/gl/:user/:repo/:tag/:file
 ```
 
-
-
 Bitbucket CDN
 
 ```plain
 https://cdn.staticaly.com/bb/:user/:repo/:tag/:file
 ```
-
 
 
 WordPress CDN

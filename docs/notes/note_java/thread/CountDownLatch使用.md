@@ -1,7 +1,7 @@
 ---
 title: CountDownLatch使用
 createTime: 2024/11/05 16:06:15
-permalink: /code/w85d9xfa/
+permalink: /note_java/w85d9xfa/
 ---
 
 CountDownLatch用于主线程和子线程协同配合，常用2种使用方式：

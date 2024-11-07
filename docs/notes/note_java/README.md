@@ -1,7 +1,7 @@
 ---
 title: java
 createTime: 2024/11/05 18:12:51
-permalink: /code/
+permalink: /note_java/
 ---
 
 - [CountDownLatch使用](thread/CountDownLatch使用.md)

@@ -1,20 +1,20 @@
 import {defineNoteConfig, defineNotesConfig} from 'vuepress-theme-plume'
 
-const javaNote = defineNoteConfig({
+const noteJava = defineNoteConfig({
     // 声明笔记的目录，相对于 `notes.dir`，这里表示 `notes/java` 目录
-    dir: 'code',
+    dir: 'note_java',
     // 声明笔记的链接前缀，与 `notes.link` 拼接，这里表示 `/typescript/`
     // 笔记内的所有文章会以 `/typescript/` 作为访问链接前缀。
-    link: '/code/',
+    link: '/note_java/',
     // 配置 笔记侧边导航栏，用于导航向笔记内的所有文档
     // 声明为 `auto` 的，将根据目录结构自动生成侧边栏导航
     sidebar: 'auto'
 })
 
 
-const linuxNote = defineNoteConfig({
-    dir: 'linux',
-    link: '/linux/',
+const noteLinux = defineNoteConfig({
+    dir: 'note_linux',
+    link: '/note_linux/',
     sidebar: 'auto'
 })
 
@@ -24,6 +24,6 @@ export const notes = defineNotesConfig({
     link: '/',
     notes: [
         // 每个笔记都是 `notes` 数组中的一个对象
-        linuxNote, javaNote
+        noteLinux, noteJava
     ]
 })

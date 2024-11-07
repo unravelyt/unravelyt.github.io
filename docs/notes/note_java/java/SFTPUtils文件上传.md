@@ -3,7 +3,7 @@ title: SFTP文件上传工具类
 tags:
   - Java
 createTime: 2024/05/03
-permalink: /code/jpyab1x8/
+permalink: /note_java/jpyab1x8/
 ---
 
 

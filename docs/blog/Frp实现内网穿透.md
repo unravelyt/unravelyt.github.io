@@ -24,7 +24,7 @@ permalink: /article/bd79zupz/
 ## 1. frp工作原理
 
 
-![工作原理](../images/frp_work.webp)
+![工作原理](../blog_pic/frp_work.webp)
 
 
 
@@ -63,12 +63,7 @@ vim /data/frp/frp_0.61.0_linux_amd64/frps.toml
 
 ```sh
 # 监听的端口，默认是7000
-bindPort = 10001
-
-# http 穿透端口
-vhostHTTPPort = 9996
-# https 穿透端口
-vhostHTTPSPort = 9997
+bindPort = 7000
 
 # token在客户端会用到,客户端frpc和服务端frps配置文件中配置相同的token
 auth.token = "token2333"
@@ -166,7 +161,7 @@ vim /data/frp/frp_0.61.0_linux_amd64/frpc.toml
 # 公网服务器ip
 serverAddr = "120.xxx.xxx.xxx"
 # 公网服务端通信端口
-serverPort = 10001   
+serverPort = 7000   
 # 令牌，与公网服务端保持一致
 auth.token = "token2333"
 
@@ -175,14 +170,15 @@ log.to = "/data/logs/frp/frps.log"
 log.level = "info"
 log.maxDays = 7
 
-# 通过 SSH 访问内网机器， frp将请求发送到x.x.x.x:10000的流量转发到内网机器的 22 端口
+# 通过SSH访问内网机器，frp将请求发送到x.x.x.x:10000的流量转发到内网机器的 22 端口
 [[proxies]]
 name = "ssh"
 type = "tcp"
+# localIP和localPort配置为需要从公网访问的内网服务的地址和端口。
 localIP = "192.168.100.5"
 localPort = 22
-# 指明由公网服务器的10000端口代理
-remotePort = 10000
+# remotePort表示在frp服务端监听的端口，访问此端口的流量将被转发到本地服务的相应端口。
+remotePort = 6000
 
 
 [[proxies]]

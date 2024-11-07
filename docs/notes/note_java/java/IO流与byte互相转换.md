@@ -3,7 +3,7 @@ title: IO流与byte[]互转
 tags:
   - Java
 createTime: 2024/11/05 16:06:15
-permalink: /code/xcd49nql/
+permalink: /note_java/xcd49nql/
 ---
 
 
