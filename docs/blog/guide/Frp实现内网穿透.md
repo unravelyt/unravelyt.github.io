@@ -24,7 +24,7 @@ permalink: /article/bd79zupz/
 ## 1. frp工作原理
 
 
-![工作原理](../blog_pic/frp_work.webp)
+![工作原理](../article_pic/frp_work.webp)
 
 
 

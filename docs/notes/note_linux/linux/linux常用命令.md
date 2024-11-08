@@ -460,4 +460,4 @@ cat /proc/cpuinfo | grep flags | grep ' lm ' | wc -l
 ```
 
 ## 图示linux汇总
-![linux](../../pic/linux命令.jpg)
+![linux](../../article_pic/linux命令.jpg)
