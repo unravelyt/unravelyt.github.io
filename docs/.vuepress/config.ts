@@ -1,6 +1,7 @@
 import {webpackBundler} from '@vuepress/bundler-webpack'
 import {defineUserConfig} from 'vuepress'
 import {plumeTheme} from 'vuepress-theme-plume'
+import {baiduAnalyticsPlugin} from '@vuepress/plugin-baidu-analytics'
 
 
 //为 VuePress 配置文件，在这里进行一个必要的配置，比如 主题、插件、构建工具等。
@@ -14,15 +15,31 @@ export default defineUserConfig({
         // 设置 favor.ico，.vuepress/public 下
         [
             'link', {rel: 'icon', href: 'logoY.webp'}
-        ]
+        ],
+
+        //百度统计
+        // ['script', {},
+        //     `var _hmt = _hmt || [];
+        //     (function() {
+        //     var hm = document.createElement("script");
+        //     hm.src = "https://hm.baidu.com/hm.js?53242c018d62786ff7244610783daec5";
+        //     var s = document.getElementsByTagName("script")[0];
+        //     s.parentNode.insertBefore(hm, s); })();`
+        // ],
+
     ],
 
+    plugins: [
+        baiduAnalyticsPlugin({
+            id: "53242c018d62786ff7244610783daec5",
+        }),
+    ],
 
     bundler: webpackBundler(),
 
     theme: plumeTheme({
         // 添加您的部署域名
-        // hostname: 'https://your_site_url',
+        hostname: 'https://www.unravely.press',
 
         blog: {
             // 全局 文章封面图，布局位置
@@ -37,13 +54,19 @@ export default defineUserConfig({
         },
 
         plugins: {
+
+            //搜索
+            search: {
+                // more options
+            },
+
             /**
              * Shiki 代码高亮
              * @see https://theme-plume.vuejs.press/config/plugins/code-highlight/
              */
             shiki: {
                 // 强烈建议预设代码块高亮语言，插件默认加载所有语言会产生不必要的时间开销
-                languages: ["xml", "java", "dockerfile","abap", "js", "ts", "html", "css", 'shell', 'bash', 'typescript', 'javascript'],
+                languages: ["xml", "java", "dockerfile", "abap", "js", "ts", "html", "css", 'shell', 'bash', 'typescript', 'javascript'],
             },
 
             /**
