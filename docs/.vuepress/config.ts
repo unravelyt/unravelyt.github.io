@@ -16,20 +16,10 @@ export default defineUserConfig({
         [
             'link', {rel: 'icon', href: 'logoY.webp'}
         ],
-
-        //百度统计
-        // ['script', {},
-        //     `var _hmt = _hmt || [];
-        //     (function() {
-        //     var hm = document.createElement("script");
-        //     hm.src = "https://hm.baidu.com/hm.js?53242c018d62786ff7244610783daec5";
-        //     var s = document.getElementsByTagName("script")[0];
-        //     s.parentNode.insertBefore(hm, s); })();`
-        // ],
-
     ],
 
     plugins: [
+        //百度统计插件
         baiduAnalyticsPlugin({
             id: "53242c018d62786ff7244610783daec5",
         }),
