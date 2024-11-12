@@ -13,7 +13,7 @@ config:
         details: docker镜像和命令
         
       - title: git
-        icon: 📖
+        icon: 💿
         link: /note_linux/xlko1vqa/
         details: git常用命令
         

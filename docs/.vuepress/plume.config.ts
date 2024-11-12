@@ -15,7 +15,7 @@ export default defineThemeConfig({
     // your git repo url
     docsRepo: '',
     docsDir: 'docs',
-    appearance: 'dark',
+    appearance: true,
     contributors: false,
     profile: {
         //头像链接地址avatar_sby.webp
