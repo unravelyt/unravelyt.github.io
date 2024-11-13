@@ -8,8 +8,6 @@ permalink: /note_java/tuuncv26/
 
 
 
-
-
 > 简单的封装了下okhttp，提供常用方法
 
 # 0. Okhttp工具类

@@ -4,7 +4,7 @@ externalLinkIcon: true
 config:
   - type: hero
     full: true
-    background: /background/bg_eye_white.jpg
+    background: /img_bg/bg_eye_white.jpg
     hero:
       name: unravely
 #      tagline: Vuepress Next Theme

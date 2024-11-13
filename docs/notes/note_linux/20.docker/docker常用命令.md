@@ -5,7 +5,7 @@ permalink: /note_linux/t6kwnf83/
 ---
 
 
-## docker删除镜像
+## 删除镜像
 ```shell :collapsed-lines=20
 echo "========== 删除<none>镜像 =========="
 docker rmi $(docker images -q -f dangling=true)
@@ -21,14 +21,14 @@ docker stop $(docker ps -a -q)
 
 ```
 
-## docker重启
+## 重启
 ```shell :collapsed-lines=20
 systemctl restart docker
 systemctl daemon-reload
 systemctl restart docker
 ```
 
-## docker操作命令
+## 操作命令
 ```shell :collapsed-lines=20
 
 # 查看日志
@@ -105,7 +105,7 @@ Valid placeholders:
 
 ```
 
-## docker启动容器
+## 启动容器
 ```shell :collapsed-lines=20
 
 ################# redis #####################
@@ -168,7 +168,7 @@ xuxueli/xxl-job-admin:2.4.1
 ################# postgres #####################
 
 ```
-## docker创建网络
+## 创建网络
 
 ```shell :collapsed-lines=20
 docker network create --driver bridge --subnet=172.18.0.0/24 my_network
@@ -196,7 +196,7 @@ docker run -it --rm --name vm1 --network=my_network busybox
 ```
 
 
-## docker 常见端口
+## 常见端口
 ```shell :collapsed-lines=20
 2375：未加密的docker socket,远程root无密码访问主机
 2376：tls加密套接字,很可能这是您的CI服务器4243端口作为https 443端口的修改

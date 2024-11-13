@@ -8,38 +8,36 @@ permalink: /links/
 
 ### 博客收录
 <CardGrid>
-
   <LinkCard title="BlogWe" icon="https://blogwe.com/img/logo8831.gif" href="https://blogwe.com/">
     博客导航网站，博客我们
   </LinkCard>
   <LinkCard title="中文博客列表导航项目" icon="https://zhblogs.ohyee.cc/logo.png" href="https://zhblogs.ohyee.cc/?tab=blog_list">
     中文博客列表导航
   </LinkCard>
-
-  <LinkCard title="良心到难以置信的网站推荐" icon="" href="https://lkssite.vip">
+  <LinkCard title="良心到难以置信的网站推荐" icon="fa6-solid:blog" href="https://lkssite.vip">
     LKs 网站推荐合集
   </LinkCard>
-
-  <LinkCard title="BlogFinder" icon="" href="https://bf.zzxworld.com">
+  <LinkCard title="BlogFinder" icon="fa6-solid:blog" href="https://bf.zzxworld.com">
     个人博客的探寻者和分享者
   </LinkCard>
-
-  <LinkCard title="storeweb" icon="" href="https://storeweb.cn">
+  <LinkCard title="storeweb" icon="fa6-solid:blog" href="https://storeweb.cn">
     个站商店，一个精致的，带社交元素的个人网站发布平台
   </LinkCard>
-  <LinkCard title="博客录" icon="" href="https://boke.lu">
-
+  <LinkCard title="博客录" icon="fa6-solid:blog" href="https://boke.lu">
+    博客录
   </LinkCard>
 
-  <LinkCard title="博友圈" icon="" href="https://www.boyouquan.com/home">
+  <LinkCard title="博客志" icon="fa6-solid:blog" href="http://www.jetli.com.cn/">
+    只收藏有价值的优秀博客
+  </LinkCard>
+
+  <LinkCard title="博友圈" icon="fa6-solid:blog" href="https://www.boyouquan.com/home">
     博客人的专属朋友圈
   </LinkCard>
-
-  <LinkCard title="十年之约" icon="" href="https://www.foreverblog.cn">
+  <LinkCard title="十年之约" icon="fa6-solid:blog" href="https://www.foreverblog.cn">
     记录所有成员的加入时间、履约情况、博客大事记、博客陨落时间等信息
   </LinkCard>
-
-  <LinkCard title="博客列表" icon="" href="https://github.com/timqian/chinese-independent-blogs">
+  <LinkCard title="博客列表" icon="fa6-solid:blog" href="https://github.com/timqian/chinese-independent-blogs">
     博客列表
   </LinkCard>
 
@@ -77,16 +75,7 @@ permalink: /links/
 </CardGrid>
 
 
-
-## 2. 论坛社区
-<CardGrid>
-  <LinkCard title="V2EX" icon="simple-icons:v2ex" href="https://www.v2ex.com/">
-    论坛，得科学上网
-  </LinkCard>
-
-</CardGrid>
-
-## 3. 开发相关
+## 2. 开发相关
 
 ### maven
 <CardGrid>
@@ -97,6 +86,16 @@ permalink: /links/
     依赖齐全的maven中央仓库
   </LinkCard>
 </CardGrid>
+
+### 流程图
+
+<CardGrid>
+  <LinkCard title="processon" icon="https://www.processon.com/assets/imgs/logo_small.svg" href="https://www.processon.com/login">
+    画流程图，但现在不止于画流程图
+  </LinkCard>
+
+</CardGrid>
+
 
 ### 网页工具
 <CardGrid>
@@ -115,6 +114,16 @@ permalink: /links/
   <LinkCard title="二维码" icon="https://static.clewm.net/cli/images/cli_logo_new.png" href="https://cli.im/tools">
     草料二维码，不止有二维码
   </LinkCard>
+  <LinkCard title="站长工具" icon="https://csstools.chinaz.com/tools/images/public/logos/logo-index.png" href="https://tool.chinaz.com/">
+    seo优化，IP工具
+  </LinkCard>
+  <LinkCard title="airportal" icon="https://assets.retiehe.com/ap-main-logo-4.webp" href="https://www.airportal.cn/">
+    隔空投送
+  </LinkCard>
+  <LinkCard title="snapdrop" icon="arcticons:snapdrop" href="https://snapdrop.net/">
+    隔空投送
+  </LinkCard>
+
 </CardGrid>
 
 ### git仓库
@@ -147,7 +156,73 @@ permalink: /links/
   </LinkCard>
 </CardGrid>
 
-## 4. AI 产品
+
+## 3. 知识文档
+
+### 技术汇总
+<CardGrid>
+  <LinkCard title="美团技术团队" icon="https://s3plus.meituan.net/static-prod01/com.sankuai.fe.www.sso/assets/logo.6a89007.png" href="https://tech.meituan.com/">
+    美团技术分享
+  </LinkCard>
+
+  <LinkCard title="Java 全栈知识体系" icon="pixelarticons:github" href="https://pdai.tech/md/resource/tools.html">
+    一起提升认知效率
+  </LinkCard>
+
+  <LinkCard title="JavaGuide" icon="https://javaguide.cn/logo.png" href="https://javaguide.cn/home.html">
+    Java学习 + 面试指南
+  </LinkCard>
+
+  <LinkCard title="Java工程师成神之路" icon="icon-park:notebook" href="https://hollischuang.github.io/toBeTopJavaer/#/menu">
+    基础篇，底层篇，进阶篇，高级篇，架构篇
+  </LinkCard>
+
+  <LinkCard title="小林coding" icon="https://cdn.xiaolincoding.com/icon.webp" href="https://xiaolincoding.com/interview/">
+    小林 x 图解计算机基础
+  </LinkCard>
+  <LinkCard title="二哥的Java进阶之路" icon="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/logo-02.png" href="https://javabetter.cn/home.html">
+    成为一名更好的 Java 程序员
+  </LinkCard>
+
+  <LinkCard title="书栈网" icon="https://static.sitestack.cn/static/images/logo.png" href="https://www.bookstack.cn/">
+    分享知识，共享智慧
+  </LinkCard>
+
+  <LinkCard title="Java日知录" icon="nonicons:java-16" href="https://javadaily.cn/">
+    一个坚持原创，有态度的博客！
+  </LinkCard>
+  <LinkCard title="CS-Notes 面试笔记" icon="nonicons:java-16" href="http://www.cyc2018.xyz/">
+    面试笔记
+  </LinkCard>
+  <LinkCard title="Why技术" icon="nonicons:java-16" href="https://www.cnblogs.com/thisiswhy">
+    博客园-Why技术
+  </LinkCard>
+
+  <LinkCard title="Javadoop" icon="nonicons:java-16" href="https://javadoop.com/">
+    关注 Java 领域相关技术
+  </LinkCard>
+
+
+</CardGrid>
+
+### 技术文档
+<CardGrid>
+  <LinkCard title="Forest" icon="https://forest.dtflyx.com/img/logo.png" href="https://forest.dtflyx.com/">
+    让天下没有难以发送的 HTTP 请求
+  </LinkCard>
+</CardGrid>
+
+## 4. 论坛社区
+<CardGrid>
+  <LinkCard title="V2EX" icon="simple-icons:v2ex" href="https://www.v2ex.com/">
+    程序员论坛，得科学上网
+  </LinkCard>
+  <LinkCard title="Githut" icon="pixelarticons:github" href="https://githut.info/">
+    A small place to discover languages in GitHub
+  </LinkCard>
+</CardGrid>
+
+## 5. 搜索网站
 <CardGrid>
   <LinkCard title="讯飞星火" icon="fluent:star-48-filled" href="https://xinghuo.xfyun.cn/">
     kimi
@@ -161,12 +236,34 @@ permalink: /links/
 </CardGrid>
 
 
-## 5. 生态建设
+## 6. 生态基础
+
+### 资源下载
+
+<CardGrid>
+  <LinkCard title="编程宝库" icon="nonicons:java-16" href="http://www.codebaoku.com/jdk/jdk-oracle-account.html">
+    技术改变世界，共享Oracle账号，jdk下载
+  </LinkCard>
+
+  <LinkCard title="github host文件下载" icon="nonicons:java-16" href="https://raw.hellogithub.com/hosts">
+    github host文件下载
+  </LinkCard>
+
+</CardGrid>
+
 
 ### widows相关
 <CardGrid>
   <LinkCard title="极简插件" icon="https://chrome.zzzmh.cn/public/img/title_200.jpg" href="https://chrome.zzzmh.cn/#/index">
     Chrome浏览器扩展插件商店的搬运工
+  </LinkCard>
+
+  <LinkCard title="3A游戏下载" icon="nonicons:java-16" href="https://koyso.com/">
+    koyso.com
+  </LinkCard>
+
+  <LinkCard title="亦是美网络" icon="nonicons:java-16" href="http://www.yishimei.cn/">
+    亦是美网络
   </LinkCard>
 </CardGrid>
 

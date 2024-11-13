@@ -11,7 +11,7 @@ export const navbar = defineNavbarConfig([
         text: '笔记', icon: 'fa:book',
         items: [
             {text: 'Java相关', link: '/notes/note_java/README.md'},
-            {text: 'Linux命令相关', link: '/notes/note_linux/README.md'}
+            {text: 'Linux相关', link: '/notes/note_linux/README.md'}
         ]
     },
     {text: '链接', link: '/links/', icon: 'streamline:web-solid'},
