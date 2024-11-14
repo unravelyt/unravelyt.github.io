@@ -6,8 +6,7 @@ const noteJava = defineNoteConfig({
     // 声明笔记的链接前缀，与 `notes.link` 拼接，这里表示 `/typescript/`
     // 笔记内的所有文章会以 `/typescript/` 作为访问链接前缀。
     link: '/note_java/',
-    // 配置 笔记侧边导航栏，用于导航向笔记内的所有文档
-    // 声明为 `auto` 的，将根据目录结构自动生成侧边栏导航
+    // 配置 笔记侧边导航栏，用于导航向笔记内的所有文档，声明为`auto`的，将根据目录结构自动生成侧边栏导航
     sidebar: 'auto'
 })
 

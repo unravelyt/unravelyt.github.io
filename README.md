@@ -23,10 +23,13 @@ pnpm i
 ```sh
 # 启动开发服务
 pnpm docs:dev
-# 构建生产包
+
+# 构建生产包 包路径：./docs/.vuepress/dist
 pnpm docs:build
+
 # 本地预览生产服务
 pnpm docs:preview
+
 # 更新 vuepress 和主题
 pnpm vp-update
 ```
