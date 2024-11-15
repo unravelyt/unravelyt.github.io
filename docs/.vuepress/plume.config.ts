@@ -34,5 +34,4 @@ export default defineThemeConfig({
         {icon: 'docker', link: '/'},
     ],
 
-
 })

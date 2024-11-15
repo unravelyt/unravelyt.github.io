@@ -5,28 +5,26 @@ tags:
   - frp
 createTime: 2023/05/06
 cover: /cover/cover_frp.png
-excerpt: 通过frp内网穿透解决外网访问内网服务器，需要一台公网服务器
+excerpt: frp解决外网访问内网服务器，需要一台有公网ip的服务器
 permalink: /article/bd79zupz/
 ---
 
 
 > 背景：
 >
-> 工作和在家学习时会用到很多中间件，想要一个稳定的开发环境，直接买个32G内存的服务器太贵了，所以买了迷你主机装了Ubuntu当做服务器，那就需要解决外网访问问题，这里就涉及到内网穿透。
->
-> 内网穿透方式：
->
-> - 自建：[frp](https://gofrp.org/zh-cn/docs/)（推荐），[localhost.run](http://localhost.run/)，[gost](https://github.com/ginuerzh/gost)，[nps](https://ehang-io.github.io/nps/#/?id=nps)
-> - 购买：花生壳，[pubyun](http://www.pubyun.com/)，[ngrok](https://www.ngrok.cc/)，[路由侠](https://www.luyouxia.com/)
->
-> 准备：一台Ubuntu系统主机，一台有公网IP的主机
+> 工作和在家学习时会用到很多中间件，想要一个稳定的开发环境，直接买个32G内存的服务器太贵了，所以买了迷你主机装了Ubuntu当做服务器，但是外网是无法访问家里的服务器的
+> 那就需要解决外网访问问题，这里就涉及到内网穿透。部署好之后把配置相关整了个文档，后续迁移公网服务器用得上。
+
+内网穿透方式：
+
+- 自建：[frp](https://gofrp.org/zh-cn/docs/)（推荐），[localhost.run](http://localhost.run/)，[gost](https://github.com/ginuerzh/gost)，[nps](https://ehang-io.github.io/nps/#/?id=nps)
+- 购买：花生壳，[SAKURA FRP](https://www.natfrp.com/)，[pubyun](http://www.pubyun.com/)，[ngrok](https://www.ngrok.cc/)，[路由侠](https://www.luyouxia.com/)
+
+准备：一台linux主机（内网），一台有公网IP的主机（公网）
 
 ## 1. frp工作原理
 
-
 ![工作原理](../article_pic/frp_work.webp)
-
-
 
 ## 2. frp压缩包文件说明
 
@@ -61,7 +59,7 @@ vim /data/frp/frp_0.61.0_linux_amd64/frps.toml
 
 ### 3.2 配置文件
 
-```sh
+```shell :collapsed-lines=20
 # 监听的端口，默认是7000
 bindPort = 7000
 
@@ -88,7 +86,7 @@ log.maxDays = 7
 **使用 systemd 来管理 frps 服务，包括启动、停止、配置后台运行和设置开机自启动。**
 
 1.创建frps.service文件：
-```shell
+```shell :collapsed-lines=20
 # 编辑文件
 vim /etc/systemd/system/frps.service
 
@@ -112,12 +110,9 @@ WantedBy = multi-user.target
 
 ```shell
 chmod 775 /etc/systemd/system/frps.service
-
 ```
-
-
 3.操作命令：
-```shell
+```shell :collapsed-lines=20
 # 刷新配置
 systemctl daemon-reload  
 
@@ -157,7 +152,7 @@ vim /data/frp/frp_0.61.0_linux_amd64/frpc.toml
 
 ### 4.2 编辑配置文件
 
-```sh
+```shell :collapsed-lines=20
 # 公网服务器ip
 serverAddr = "120.xxx.xxx.xxx"
 # 公网服务端通信端口
@@ -180,14 +175,12 @@ localPort = 22
 # remotePort表示在frp服务端监听的端口，访问此端口的流量将被转发到本地服务的相应端口。
 remotePort = 6000
 
-
 [[proxies]]
 name = "mysql"
 type = "tcp"
 localIP = "192.168.100.5"
 localPort = 3306
 remotePort = 3306
-
 
 # 添加web节点
 #[[proxies]]  
@@ -206,7 +199,7 @@ remotePort = 3306
 **使用 systemd 来管理 frps 服务，包括启动、停止、配置后台运行和设置开机自启动。**
 
 1.创建frpc.service文件：
-```shell
+```shell :collapsed-lines=20
 # 编辑文件
 vim /etc/systemd/system/frpc.service
 
@@ -235,7 +228,7 @@ chmod 775 /etc/systemd/system/frpc.service
 ```
 
 操作命令:
-```shell
+```shell :collapsed-lines=20
 # 刷新配置
 systemctl daemon-reload  
 
@@ -257,7 +250,7 @@ systemctl enable frpc
 
 ## 5. 重要：避开以下端口
 
-```java
+```shell :collapsed-lines=20
 1, // tcpmux
 7, // echo
 9, // discard

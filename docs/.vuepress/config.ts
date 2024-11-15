@@ -43,6 +43,12 @@ export default defineUserConfig({
             }
         },
 
+        // 页脚配置
+        footer: {
+            message: '阳光正好',
+            copyright: 'Copyright © 2024 unravely'
+        },
+
         plugins: {
 
             //搜索

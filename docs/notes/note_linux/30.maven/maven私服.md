@@ -1,5 +1,5 @@
 ---
-title: maven私服
+title: maven私服设置
 createTime: 2024/11/08 10:55:30
 permalink: /note_linux/w8ms6rsv/
 ---
@@ -15,32 +15,47 @@ permalink: /note_linux/w8ms6rsv/
 ### 1.maven setting配置
 
 ```xml
+
 <mirror>
     <id>aliyunmaven</id>
     <mirrorOf>*</mirrorOf>
     <name>阿里云公共仓库</name>
     <url>https://maven.aliyun.com/repository/public</url>
 </mirror>
+
+
 ```
 
 ### 2.项目pom指定
 
 ```xml
-<repositories>
-  <repository>
-    <id>central</id>
-    <name>aliyun maven</name>
-    <url>https://maven.aliyun.com/repository/public</url>
-    <layout>default</layout>
-    <!-- 是否开启发布版构件下载 -->
+
+<repository>
+    <id>spring</id>
+    <url>https://maven.aliyun.com/repository/spring</url>
     <releases>
-    	<enabled>true</enabled>
+        <enabled>true</enabled>
     </releases>
-    <!-- 是否开启快照版构件下载 -->
     <snapshots>
-    	<enabled>false</enabled>
+        <enabled>true</enabled>
     </snapshots>
-  </repository>
+</repository>
+
+<repositories>
+    <repository>
+        <id>central</id>
+        <name>aliyun maven</name>
+        <url>https://maven.aliyun.com/repository/public</url>
+        <layout>default</layout>
+        <!-- 是否开启发布版构件下载 -->
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <!-- 是否开启快照版构件下载 -->
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
 </repositories>
 
 
@@ -81,7 +96,7 @@ permalink: /note_linux/w8ms6rsv/
 <!--上传私服 配置-->
 <distributionManagement>
     <repository>
-    	<!--id的名字可以任意取，但是在setting文件中的属性<server>的ID与这里一致-->
+        <!--id的名字可以任意取，但是在setting文件中的属性<server>的ID与这里一致-->
         <id>local-releases</id>
         <!--name只是标识作用，无实际作用-->
         <name>nexus Repository RELEASES</name>
@@ -105,9 +120,9 @@ setting配置文件默认路径（windows）：`C:\Users\用户名\.m2\settings.
 ```xml
 <!-- 指定私服的密码： -->
 <servers>
-  	<server>
+    <server>
         <!--对应pom.xml的distributionManagement.id=releases的仓库-->
-        <id>local-releases</id> 
+        <id>local-releases</id>
         <username>admin</username>
         <password>admin</password>
     </server>
@@ -118,7 +133,7 @@ setting配置文件默认路径（windows）：`C:\Users\用户名\.m2\settings.
         <username>admin</username>
         <password>admin</password>
     </server>
- </servers>
+</servers>
 ```
 
 根据pom文件中设置的上传到不同仓库
@@ -166,39 +181,57 @@ setting配置文件默认路径（windows）：`C:\Users\用户名\.m2\settings.
 ### 2. Maven settings 配置
 
 ```xml
-<!-- 仓库地址1 -->
-<!-- 这里的ID为maven仓库的name -->
-<mirror>
-    <id>maven-public</id> 
-    <name>local nexus</name>
-    <mirrorOf>*</mirrorOf>
-    <url>http://192.168.244.130:8081/repository/maven-public/</url>
-</mirror>
-
-<!-- 仓库地址2 -->
-<mirror>
-    <id>wshoto-nexus</id>
-    <url>http://111.229.217.171:7081/nexus/repository/maven-public/</url>
-    <mirrorOf>!maven-public,*</mirrorOf>
-</mirror>
+<mirrors>
+    <!-- 仓库地址1 -->
+    <!-- 这里的ID为maven仓库的name -->
+    <mirror>
+        <id>maven-public</id>
+        <name>名字不重要，id很重要</name>
+        <mirrorOf>*</mirrorOf>
+        <url>http://192.168.244.130:8081/repository/maven-public/</url>
+    </mirror>
+    <!-- 仓库地址2 -->
+    <mirror>
+        <id>wshoto-nexus</id>
+        <url>http://111.229.217.171:7081/nexus/repository/maven-public/</url>
+        <mirrorOf>!maven-public,*</mirrorOf>
+    </mirror>
+</mirrors>
 ```
-
-
 
 ## setting的mirrorOf作用
 
-当通过pom文件指定的repository去下载镜像时，mirror首先通过repository的id拦截对远程仓库的请求 , 改变对目标仓库的下载地址，因为自己在这里指定的mirrorOf为*，那么所有的repository都会被该mirror拦截，从而替换成了自己的私服镜像
+在Maven的`settings.xml`文件中，`<mirrors>`元素用于定义镜像服务器，这些镜像服务器可以替代默认的中央仓库或其他远程仓库。
+`<mirrorOf>`属性用于指定哪些仓库可以被这个镜像替代。
 
-```text
-1.*
-匹配所有远程仓库。
+mirrorOf 属性指定了哪些仓库可以被当前定义的镜像替代。 可以使用通配符来匹配多个仓库。
 
-2.external:*
-匹配所有远程仓库，使用localhost的除外，使用file://协议的除外。也就是说，匹配所有不在本机上的远程仓库。
+常见的 mirrorOf 值：
 
-3.repo1,repo2
-匹配仓库repo1和repo2，使用逗号分隔多个远程仓库。
+- `*`：匹配所有仓库。
+- `external:*`：匹配所有外部仓库（即不在本地网络中的仓库）。
+- `central`：仅匹配中央仓库。
+- `repo1,repo2`：匹配特定的仓库 repo1 和 repo2。
+- `*,!repo1`：匹配所有仓库，但排除 repo1。
 
-4.*,!repo1
-匹配所有远程仓库，repo1除外，使用感叹号将仓库从匹配中排除。
+```xml
+<!--在这个示例中，mirror1 替代 repo1 和 repo2，而 mirror2 替代所有其他仓库，但不包括 repo1-->
+<settings>
+    <mirrors>
+        <mirror>
+            <id>mirror1</id>
+            <url>https://mirror1.example.com/maven2</url>
+            <mirrorOf>repo1,repo2</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>mirror2</id>
+            <url>https://mirror2.example.com/maven2</url>
+            <mirrorOf>*,!repo1</mirrorOf>
+        </mirror>
+    </mirrors>
+</settings>
+
 ```
+
+如果有多个镜像匹配同一个仓库，Maven 会按 `<mirrors>` 列表中的顺序选择第一个匹配的镜像。
+通过合理配置 mirrorOf 属性，可以优化 Maven 的依赖下载速度，减少对外部网络的依赖
