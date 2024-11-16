@@ -1,6 +1,5 @@
 import {defineNavbarConfig} from 'vuepress-theme-plume'
 
-
 export const navbar = defineNavbarConfig([
     {text: '首页', link: '/', icon: 'ion:home'},
     {text: '博客', link: '/blog/', icon: 'line-md:sun-rising-filled-loop'},
@@ -10,8 +9,16 @@ export const navbar = defineNavbarConfig([
     {
         text: '笔记', icon: 'fa:book',
         items: [
-            {text: 'Java相关', link: '/notes/note_java/README.md'},
-            {text: 'Linux相关', link: '/notes/note_linux/README.md'}
+            {text: 'Java', link: '/notes/note_java/README.md', icon: 'devicon:java'},
+            {text: 'Linux', link: '/notes/note_linux/README.md', icon: 'skill-icons:linux-light'},
+            {text: 'database', link: '/notes/note_database/README.md', icon: 'icon-park:data'},
+            {text: 'docker', link: '/notes/note_docker/README.md', icon: 'skill-icons:docker'},
+            {text: 'Maven', link: '/notes/note_maven/README.md', icon: 'devicon:maven'},
+            {text: 'Git', link: '/notes/note_git/README.md', icon: 'skill-icons:git'},
+            {text: 'Nginx', link: '/notes/note_nginx/README.md', icon: 'skill-icons:nginx'},
+            {text: '前端', link: '/notes/note_front/README.md', icon: 'devicon:webpack'},
+            {text: 'ELK', link: '/notes/note_elk/README.md', icon: 'vscode-icons:file-type-elastic'},
+
         ]
     },
     {text: '链接', link: '/links/', icon: 'streamline:web-solid'},

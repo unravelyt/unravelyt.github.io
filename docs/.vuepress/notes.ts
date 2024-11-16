@@ -10,19 +10,60 @@ const noteJava = defineNoteConfig({
     sidebar: 'auto'
 })
 
-
 const noteLinux = defineNoteConfig({
     dir: 'note_linux',
     link: '/note_linux/',
     sidebar: 'auto'
 })
 
+const noteFront = defineNoteConfig({
+    dir: 'note_front',
+    link: '/note_front/',
+    sidebar: 'auto'
+})
+
+const noteDatabase = defineNoteConfig({
+    dir: 'note_database',
+    link: '/note_database/',
+    sidebar: 'auto'
+})
+
+const noteDocker = defineNoteConfig({
+    dir: 'note_docker',
+    link: '/note_docker/',
+    sidebar: 'auto'
+})
+
+const noteGit = defineNoteConfig({
+    dir: 'note_git',
+    link: '/note_git/',
+    sidebar: 'auto'
+})
+
+const noteMaven = defineNoteConfig({
+    dir: 'note_maven',
+    link: '/note_maven/',
+    sidebar: 'auto'
+})
+
+const noteNginx = defineNoteConfig({
+    dir: 'note_nginx',
+    link: '/note_nginx/',
+    sidebar: 'auto'
+})
+
+
+const noteElk = defineNoteConfig({
+    dir: 'note_elk',
+    link: '/note_elk/',
+    sidebar: 'auto'
+})
 
 export const notes = defineNotesConfig({
     dir: 'notes',
     link: '/',
     notes: [
         // 每个笔记都是 `notes` 数组中的一个对象
-        noteLinux, noteJava
+        noteLinux, noteJava, noteFront, noteDatabase, noteDocker, noteNginx, noteMaven, noteGit, noteElk
     ]
 })

@@ -8,6 +8,10 @@ excerpt: 好看的markdown写法，值得拥有
 permalink: /article/doomx6i6/
 ---
 
+
+更详细的：https://blog.csdn.net/mrluo735/article/details/136643692
+
+
 ## 标题 2
 
 ### 标题 3
