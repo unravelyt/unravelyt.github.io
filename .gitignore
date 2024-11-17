@@ -34,6 +34,7 @@ build/
 
 .flattened-pom.xml
 
+dist.zip
 
 # 编译输出
 dist/
