@@ -19,7 +19,7 @@ export default defineThemeConfig({
     contributors: false,
     profile: {
         //头像链接地址avatar_sby.webp
-        avatar: 'avatar_spider.webp',
+        avatar: 'https://file-1301971854.cos.ap-guangzhou.myqcloud.com/blog/base/avatar_spider.webp',
         name: 'yutong',
         description: '阳光正好，微风不燥',
         // 是否显示为圆形头像

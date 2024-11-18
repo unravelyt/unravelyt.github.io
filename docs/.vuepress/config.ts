@@ -45,8 +45,8 @@ export default defineUserConfig({
 
         // 页脚配置
         footer: {
-            message: '阳光正好',
-            copyright: 'Copyright © 2024 unravely'
+            copyright: 'Copyright © 2024 unravely',
+            message: '<a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2024082911号-1</a> | <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">鄂公网安备</a>',
         },
 
         plugins: {

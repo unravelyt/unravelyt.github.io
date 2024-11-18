@@ -79,7 +79,7 @@ long days = startTime.until(endTime,ChronoUnit.DAYS);
 
 这边值得一提的是在中国的时区偏移是8小时，本次示例转的时间戳是秒级别，得到的值是一个long值；知识追寻者这边是当前时间，故读者得到的结果与知识追寻者得到的结果不一致；读者可以使用站长工具进行测试校验
 
-```csharp
+```java
 @Test
 public void localTimeTest1(){
     // 获得当前时间
@@ -96,7 +96,7 @@ public void localTimeTest1(){
 
 此方法执行的结果与之前一致，也是秒级别
 
-```csharp
+```java
 @Test
 public void localTimeTest2(){
     // 获得当前时间
@@ -113,7 +113,7 @@ public void localTimeTest2(){
 
 此方式转的将是毫秒级别，直接用于站长工具是测试不出来，读者应该将其除1000取商获得正确的秒级时间戳；
 
-```csharp
+```java
 @Test
 public void localTimeTest3(){
     // 获得当前时间
@@ -134,7 +134,7 @@ public void localTimeTest3(){
 
 先获取时间戳为秒级别，然后通过转换为LocalDateTime
 
-```csharp
+```java
 @Test
 public void localTimeTest4(){
     //获得时间戳
@@ -151,7 +151,7 @@ public void localTimeTest4(){
 
 本次获取的时间搓将是毫秒级别故要除以1000
 
-```csharp
+```java
 public void localTimeTest5(){
     //获得时间戳
     long milliseconds = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
@@ -190,7 +190,7 @@ public void localTimeTest6(){
 
 注意这边是毫秒级的时间戳；
 
-```csharp
+```java
 @Test
 public void localDateTest1(){
     //获得时间戳
@@ -206,7 +206,7 @@ public void localDateTest1(){
 
 注意这边是秒级时间戳
 
-```csharp
+```java
 @Test
 public void localDateTest2(){
     //获得时间戳
@@ -225,7 +225,7 @@ public void localDateTest2(){
 
 注意妙计时间戳
 
-```csharp
+```java
 @Test
 public void localDateTest3(){
     LocalDate localDate = LocalDate.now();
@@ -241,7 +241,7 @@ public void localDateTest3(){
 
 注意毫秒级时间戳
 
-```csharp
+```java
 @Test
 public void localDateTest4(){
     LocalDate localDate = LocalDate.now();

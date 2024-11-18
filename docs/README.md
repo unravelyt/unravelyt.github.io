@@ -4,7 +4,7 @@ externalLinkIcon: true
 config:
   - type: hero
     full: true
-    background: /img_bg/bg_moon.jpg
+    background: https://file-1301971854.cos.ap-guangzhou.myqcloud.com/blog/base/bg_moon.jpg
     hero:
       name: unravely
 #      tagline: Vuepress Next Theme

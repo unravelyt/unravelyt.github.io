@@ -635,7 +635,7 @@ CompletableFuture的get()方法是阻塞的。
 
 CompletableFuture的get()方法是阻塞的，如果使用它来获取异步调用的返回值，需要添加超时时间。
 
-```csharp
+```java
 //反例
  CompletableFuture.get();
 //正例

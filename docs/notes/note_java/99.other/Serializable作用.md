@@ -208,7 +208,7 @@ public class WriteTeacher {
 
 **注意：反序列化的顺序与序列化时的顺序一致**。
 
-```ini
+```java
 public class ReadTeacher {
     public static void main(String[] args) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("teacher.txt"))) {
@@ -253,7 +253,7 @@ public class ReadTeacher {
 
 由于java序利化算法不会重复序列化同一个对象，只会记录已序列化对象的编号。**如果序列化一个可变对象（对象内的内容可更改）后，更改了对象内容，再次序列化，并不会再次将此对象转换为字节序列，而只是保存序列化编号。**
 
-```ini
+```java
 public class WriteObject {
     public static void main(String[] args) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.txt"));
@@ -332,12 +332,12 @@ public class WriteObject {
    private void writeObject(java.io.ObjectOutputStream out) throws IOException；
    private void readObject(java.io.ObjectIutputStream in) throws IOException,ClassNotFoundException;
    private void readObjectNoData() throws ObjectStreamException;
-   复制代码
+
    ```
 
    通过重写writeObject与readObject方法，可以自己选择哪些属性需要序列化， 哪些属性不需要。如果writeObject使用某种规则序列化，则相应的readObject需要相反的规则反序列化，以便能正确反序列化出对象。这里展示对名字进行反转加密。
 
-   ```csharp
+   ```java
    public class Person implements Serializable {
       private String name;
       private int age;
@@ -498,7 +498,7 @@ public class ExPerson implements Externalizable {
 
 java序列化提供了一个private static final long serialVersionUID 的序列化版本号，只有版本号相同，即使更改了序列化属性，对象也可以正确被反序列化回来。
 
-```arduino
+```java
 public class Person implements Serializable {
     //序列化版本号
     private static final long serialVersionUID = 1111013L;

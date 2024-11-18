@@ -11,13 +11,13 @@ permalink: /about/
 
 2. Hexo
 
-    后来知道了hexo，在2022年学习用hexo搭建，部署在GitHub pages上，期间还买个了10年的域名，可以直接将域名指向GitHub Pages。
+    后来知道了hexo，在2022年学习用hexo搭建，部署在GitHub pages上，期间还买个了`unravely.press`域名，可以直接将域名指向GitHub Pages。
 弊端是访问速度比较慢，而且有一些cdn的js经常挂掉，访问效果很差。
 
 3. VuePress
 
     今年双11服务器也到期了，然后偶然见看到了vuePress，页面很专业，最重要的是js不需要引用外部资源了，遂转至vuePress。
-买了服务器，把代码部署到服务器上，然后又买了个.cn的域名，搞了下备案，这样访问就快很多了。
+买了服务器，把代码部署到服务器上，然后又买了个`unravely.cn`的域名，搞了下备案，这样访问就快很多了。
 
 4. 至今
 ::::

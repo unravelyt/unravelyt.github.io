@@ -99,6 +99,10 @@ permalink: /links/
 
 ### 网页工具
 <CardGrid>
+  <LinkCard title="图片压缩" icon="fa-solid:tools" href="https://tinify.cn/">
+    图片中相似的颜色会被合并
+  </LinkCard>
+
   <LinkCard title="时间戳" icon="fa-solid:tools" href="https://tool.lu/timestamp">
     工具类网站，不止有时间戳工具
   </LinkCard>
