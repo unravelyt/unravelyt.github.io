@@ -56,13 +56,18 @@ export default defineUserConfig({
                 // more options
             },
 
+            // 隐藏文本
+            markdownPower: {
+                plot: true,
+            },
+
             /**
              * Shiki 代码高亮
              * @see https://theme-plume.vuejs.press/config/plugins/code-highlight/
              */
             shiki: {
                 // 强烈建议预设代码块高亮语言，插件默认加载所有语言会产生不必要的时间开销
-                languages: ["sql", "xml", "java", "dockerfile", "abap", "js", "ts", "html", "css", 'shell', 'bash', 'typescript', 'javascript'],
+                languages: ["yml", "sql", "xml", "java", "dockerfile", "abap", "js", "ts", "html", "css", 'shell', 'bash', 'typescript', 'javascript'],
             },
 
             /**

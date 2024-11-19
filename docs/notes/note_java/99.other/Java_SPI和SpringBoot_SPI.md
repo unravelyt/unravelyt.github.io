@@ -62,7 +62,7 @@ Java SPI就是提供这样的一个机制：为某个接口寻找服务实现的
    如果没有缓存，执行类的装载，实现如下：
 - (1) 读取META-INF/services/下的配置文件，获得所有能被实例化的类的名称，值得注意的是，ServiceLoader**可以跨越jar包获取META-INF下的配置文件**，具体加载配置的实现代码如下：
 
-```dart
+```java
 try {
     String fullName = PREFIX + service.getName();
     if (loader == null)
