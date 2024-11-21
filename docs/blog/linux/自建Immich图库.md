@@ -1,8 +1,9 @@
 ---
 title: 自建Immich图库
 createTime: 2024/11/20 14:43:23
+excerpt: 时间会冲淡记忆，可以借助外力保留
+cover: /cover/cover_immich.jpg
 permalink: /article/ehir7gjs/
-# unravely@126,immichyut...
 ---
 
 

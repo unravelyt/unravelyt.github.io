@@ -99,6 +99,16 @@ permalink: /links/
 
 ### 网页工具
 <CardGrid>
+
+  <LinkCard title="draw.io" icon="vscode-icons:file-type-drawio" href="https://www.drawio.com/">
+    强大，推荐
+  </LinkCard>
+
+  <LinkCard title="draw.io" icon="https://www.iodraw.com/static/img/common/iodraw.svg" href="https://www.iodraw.com/">
+    免费在线画图，无需注册
+  </LinkCard>
+
+
   <LinkCard title="图片压缩" icon="fa-solid:tools" href="https://tinify.cn/">
     图片中相似的颜色会被合并
   </LinkCard>
