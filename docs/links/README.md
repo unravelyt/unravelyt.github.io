@@ -113,6 +113,10 @@ permalink: /links/
     图片中相似的颜色会被合并
   </LinkCard>
 
+  <LinkCard title="sql转entity" icon="fa-solid:tools" href="https://www.lddgo.net/string/mysql-to-java">
+    在线MySQL生成JavaBean
+  </LinkCard>
+
   <LinkCard title="时间戳" icon="fa-solid:tools" href="https://tool.lu/timestamp">
     工具类网站，不止有时间戳工具
   </LinkCard>
@@ -145,7 +149,7 @@ permalink: /links/
   <LinkCard title="GitHub" icon="devicon:github" href="https://github.com">
     GitHub
   </LinkCard>
-  <LinkCard title="GitHub" icon="simple-icons:gitee" href="https://gitee.com/explore">
+  <LinkCard title="Gitee" icon="simple-icons:gitee" href="https://gitee.com/explore">
     GitHub
   </LinkCard>
   <LinkCard title="GitHub文件加速" icon="marketeq:download-alt-4" href="https://github.moeyy.xyz/">
@@ -162,12 +166,17 @@ permalink: /links/
 
 ### Docker
 <CardGrid>
-  <LinkCard title="Dockerhub" icon="logos:docker-icon" href="https://hubgw.docker.com/search">
+
+  <LinkCard title="Dockerhub" icon="logos:docker-icon" href="https://hub.docker.com/search?badges=official">
     docker官方镜像仓库
+  </LinkCard>
+  <LinkCard title="Dockerhub" icon="logos:docker-icon" href="https://hubgw.docker.com/search">
+    docker官方镜像仓库2
   </LinkCard>
   <LinkCard title="docker国内代理" icon="skill-icons:docker" href="https://dockerproxy.net/">
     解决国内拉不下来镜像问题
   </LinkCard>
+
 </CardGrid>
 
 
@@ -219,7 +228,7 @@ permalink: /links/
 
 </CardGrid>
 
-### 技术文档
+### 产品文档
 <CardGrid>
   <LinkCard title="Forest" icon="https://forest.dtflyx.com/img/logo.png" href="https://forest.dtflyx.com/">
     让天下没有难以发送的 HTTP 请求

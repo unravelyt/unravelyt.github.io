@@ -4,7 +4,7 @@ tags:
   - markdown
 createTime: 2024/11/04 10:11:47
 cover: /cover/cover_markdown.jpeg
-excerpt: 好看的markdown写法，值得拥有
+excerpt: 写文档必备，更好看的markdown写法
 permalink: /article/doomx6i6/
 ---
 

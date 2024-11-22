@@ -3,7 +3,7 @@ title: CDN加速静态资源
 tags:
   - CDN
 createTime: 2023/02/04
-excerpt: 免费的CDN, 个人主要用途访问搭建的GitHub图床图片
+excerpt: 穷鬼必备，白嫖免费的CDN
 cover: /cover/cover_cdn.jpg
 permalink: /article/yuubz445/
 ---

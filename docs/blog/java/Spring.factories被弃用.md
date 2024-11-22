@@ -1,7 +1,9 @@
 ---
-title: springboot3.0之后的自动装配方式变更
+title: 自动装配格式变更：SpringBoot 3.x与2.x不同
 createTime: 2024/11/08 14:29:55
-excerpt: Spring.factories被弃用
+tags:
+  - SpringBoot
+excerpt: 3.x之后Spring.factories被弃用
 cover: /cover/cover_springboot.jpg
 permalink: /article/0tv1arox/
 ---

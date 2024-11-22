@@ -5,7 +5,7 @@ tags:
   - frp
 createTime: 2023/05/06
 cover: /cover/cover_frp.png
-excerpt: frp解决外网访问内网服务器，需要一台有公网ip的服务器
+excerpt: 内网穿透，让你访问家里的电脑
 permalink: /article/bd79zupz/
 ---
 
