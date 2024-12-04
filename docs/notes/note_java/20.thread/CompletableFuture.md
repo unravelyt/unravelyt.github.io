@@ -5,7 +5,7 @@ permalink: /note_java/7vvyda3z/
 ---
 
 
-## Future
+## 0.Future
 
 学习CompletableFuture之前了解下Future，它是Java5新加的一个接口，它提供了一种异步并行计算的功能。如果主线程需要执行一个很耗时的计算任务，我们就可以通过future把这个任务放到异步线程中执行。主线程继续处理其他任务，处理完成后，再通过Future获取计算结果。
 
@@ -52,9 +52,8 @@ public static void main(String[] args) throws Exception{
 
 **阻塞的方式和异步编程的设计理念相违背，而轮询的方式会耗费无谓的CPU资源**。因此，JDK8设计出CompletableFuture。CompletableFuture提供了一种**观察者模式类似的机制**，可以让任务执行完成后通知监听的一方。
 
-## CompletableFuture
 
-### 1. 含义
+## 1. CompletableFuture含义
 
 CompletableFuture字面翻译过来，就是“可完成的Future”。同传统的Future相比较，CompletableFuture能够主动设置计算的结果值（主动终结计算过程，即completable），从而在某些场景下主动结束阻塞等待。而Future由于不能主动设置计算结果值，一旦调用get()进行阻塞等待，要么当计算结果产生，要么超时，才会返回。
 
@@ -76,15 +75,15 @@ System.out.println(future.join());
 
 可以发现，使用CompletableFuture，代码简洁了很多。CompletableFuture的supplyAsync方法，提供了异步执行的功能，线程池也不用单独创建了。实际上，它CompletableFuture使用了默认线程池：`ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();`
 
-### 2. CompletableFuture的get()和join()区别
+## 2. get()和join()区别
 
-#### 1. 区别
+### 1. 区别
 
 - **get()** 方法抛出的是checkException（受检异常）， **需要用户手动处理**（抛出或者 try catch）
 
 - **join() **方法抛出的是uncheckException（非受检异常)，**不会强制开发者强制捕捉**
 
-#### 2. 异常
+### 2. 异常
 
 java.lang.Throwable
 
@@ -137,7 +136,7 @@ Java.lang.TypeNotPresentException --类型不存在异常
 
 
 
-### 3. 创建异步方法
+## 3. 创建异步方法
 
 CompletableFuture创建异步任务，一般有supplyAsync和runAsync两个方法
 
@@ -174,12 +173,11 @@ public static void main(String[] args) {
 
 
 
-### 4. 任务异步回调
+## 4. 任务异步回调
 
 **方法一览：**
 
-
-#### 1. thenRun/thenRunAsync
+### 1. thenRun/thenRunAsync
 
 thenRun方法：做完第一个任务后，再做第二个任务。某个任务执行完成后，执行回调方法；但是**前后两个任务没有参数传递，第二个任务也没有返回值**
 
@@ -202,7 +200,7 @@ public static void main(String[] args) throws Exception{
 null
 ```
 
-####  TIPS：
+**TIPS：**
 
 **thenRun 和thenRunAsync区别：**
 
@@ -365,12 +363,9 @@ handleFuture入參future返回值
 
 
 
-## 1.6 多任务组合处理
+## 5. 多任务组合处理
 
 **方法一览：**
-
-
-
 
 
 ### 1. AND组合关系
@@ -603,7 +598,7 @@ future3=第二个任务
 最終結果=第一个任务
 ```
 
-## 1.7 CompletableFuture使用有哪些注意点
+## 6. CompletableFuture注意点
 
 - Future需要获取返回值才能获取异常信息
 - 他的get()和join() 方法是阻塞的

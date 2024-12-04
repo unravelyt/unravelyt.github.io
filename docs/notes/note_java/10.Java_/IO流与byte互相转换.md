@@ -8,7 +8,7 @@ permalink: /note_java/xcd49nql/
 
 
 
-# 1. 将File转换为byte[]数组
+## 1. File转byte[]
 
 ```java
 //java.nio.file
@@ -16,7 +16,7 @@ String filePath = "C:\\Users\\user\\Pictures\\22.jpg";
 byte[] bytes = Files.readAllBytes(Paths.get(filePath));
 ```
 
-# 2. 将FileInputStream 转换为byte[]数组
+## 2. InputStream转byte[]
 
 **方式1：**
 
@@ -61,14 +61,14 @@ byte[] bytes = ByteStreams.toByteArray(inputStream);
 byte[] bytes = inputStream.readAllBytes()
 ```
 
-# 3. 将byte[]数组转换为InputStream
+## 3. byte[]转InputStream
 
 ```java
 byte[] bytes = new byte[1024];
 InputStream inputStream = new ByteArrayInputStream(bytes);
 ```
 
-# 4. 将byte[]数组转换为File
+## 4. byte[]转File
 
 ```java
 File file = new File("C:\\Users\\user\\Pictures\\22.jpg");
@@ -77,7 +77,7 @@ BufferedOutputStream bufferedOutput = new BufferedOutputStream(output);
 bufferedOutput.write(byt);
 ```
 
-# 5. ByteArrayInputStream使用
+## 5. ByteArrayInputStream使用
 
 ```java
 byte[] source = ...;
