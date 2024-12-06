@@ -8,6 +8,24 @@ permalink: /note_java/kx8v4uwu/
 > 记不住啊
 > 汇总：https://www.exception.site/java8/java8-stream-tutorial
 
+## 获取2个日期内间隔多少个日期
+```java
+public List<LocalDate> getDatesBetween(LocalDateTime start, LocalDateTime end) {
+    // 提取日期部分
+    LocalDate startDate = start.toLocalDate();
+    LocalDate endDate = end.toLocalDate();
+
+    // 计算天数差
+    long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+
+    // 生成每一天的日期
+    List<LocalDate> dates = new ArrayList<>();
+    for (long i = 0; i <= daysBetween; i++) {
+        dates.add(startDate.plusDays(i));
+    }
+    return dates;
+}
+```
 
 ## Collectors.toMap
 ```java

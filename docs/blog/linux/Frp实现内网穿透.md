@@ -165,6 +165,17 @@ log.to = "/data/logs/frp/frps.log"
 log.level = "info"
 log.maxDays = 7
 
+# 开启socks5代理，就可以通过proxifier直接访问内网地址了
+[[proxies]]
+name = "socks5"
+type = "tcp"
+remotePort = 6000
+[proxies.plugin]
+type = "socks5"
+username = "root"
+password = "root"
+
+
 # 通过SSH访问内网机器，frp将请求发送到x.x.x.x:10000的流量转发到内网机器的 22 端口
 [[proxies]]
 name = "ssh"
@@ -316,3 +327,42 @@ systemctl enable frpc
 6668, // Alternate IRC [Apple addition]
 6669, // Alternate IRC [Apple addition]
 ```
+
+## 6. proxifier
+Proxifier 是一款功能非常强大的socks5客户端，可以让不支持通过代理服务器工作的网络程序能通过HTTPS或SOCKS代理或代理链。
+
+[官网下载原安装包](https://www.proxifier.com)
+
+### 激活码：
+- standard(标准版)
+```text
+4MHDA-C3FNN-EV6YH-ZENEQ-5A2CP
+YHAEF-HWLHS-CQR2A-ZENEQ-35H26
+987NH-LYFSC-L4V37-PWN3R-PWE7F
+CVYAW-WWVJD-8LA2Y-PWN3R-CZA82
+TET7R-EY3CC-4E43T-H0NUS-XQCS9
+G8E33-937CU-WM3YE-H0NUS-W236X
+NRNQ9-KWN42-PSU2N-CYBER-HCEB7
+GG2U7-5WH8W-TZF22-CYBER-BGTY3
+S4EMQ-NYMZF-LFT3E-ARSEN-SNZLF
+ATV34-T2W3Y-WHNWV-ARSEN-AJJ4L
+5EZ8G-C3WL5-B56YG-SCXM9-6QZAP
+```
+
+- portable(便携版即免安装版)
+```text
+YYEQ8-PYURB-PVJ3E-ZENEQ-6KCYC
+V4FRJ-JYBNC-X4P3F-ZENEQ-G5YNE
+L6Z8A-XY2J4-BTZ3P-ZZ7DF-A2Q9C
+```
+
+- macos
+```text
+87PZC-V3C3H-GTLYP-ZENEQ-2GJLT
+NBBCX-D242M-F97WB-ZENEQ-7VH3H
+P427L-9Y552-5433E-8DSR3-58Z68
+```
+
+### 配置：
+localhost; 127.0.0.1; %ComputerName%; ::1
+

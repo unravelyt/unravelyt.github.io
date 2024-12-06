@@ -243,7 +243,7 @@ public static <S> ThreadLocal<S> withInitial(Supplier<? extends S> supplier) {
 
 有`Supplier`供给接口，这意味着我们可以使用如下方式设置初始值：
 
-```swift
+```java
 private static ThreadLocal<Long> threadLocal1 = ThreadLocal.withInitial(() -> 1L);
 ```
 

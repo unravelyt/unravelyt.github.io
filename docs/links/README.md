@@ -259,7 +259,7 @@ permalink: /links/
 </CardGrid>
 
 
-## 6. 生态基础
+## 6. 基础建设
 
 ### 资源下载
 
@@ -271,6 +271,15 @@ permalink: /links/
   <LinkCard title="github host文件下载" icon="nonicons:java-16" href="https://raw.hellogithub.com/hosts">
     github host文件下载
   </LinkCard>
+
+  <LinkCard title="SourceForge" icon="nonicons:java-16" href="https://sourceforge.net/directory/">
+    软件平台,创建，协作和分发到全球
+  </LinkCard>
+
+  <LinkCard title="SourceForge" icon="nonicons:java-16" href="https://mirrors.nju.edu.cn/">
+    南京大学开源镜像站
+  </LinkCard>
+
 
 </CardGrid>
 
@@ -296,4 +305,8 @@ permalink: /links/
   <LinkCard title="immich" icon="https://immich.app/img/immich-logo-inline-light.png" href="https://immich.app/docs/install/docker-compose">
     自托管照片和视频管理解决方案
   </LinkCard>
+  <LinkCard title="1panel" icon="https://1panel.cn/img/logo-blue.png" href="https://1panel.cn/docs/installation/online_installation/">
+    新一代的 Linux 服务器运维管理面板
+  </LinkCard>
 </CardGrid>
+

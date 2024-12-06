@@ -46,14 +46,14 @@ permalink: /note_java/omgxitxi/
 @Validated //注意，当使用单参数校验时需要在Controller上加上@Validated注解，否则不生效。
 public class ValidController {
 
-    @ApiOperation("RequestBody校验")
+    //RequestBody校验
     @PostMapping("/valid/test1")   
     public String test1(@Validated @RequestBody ValidVO validVO){
         log.info("validEntity is {}", validVO);
         return "test1 valid success";
     }
 
-    @ApiOperation("Form校验")
+    //Form校验
     @PostMapping(value = "/valid/test2")
     public String test2(@Validated ValidVO validVO){
         log.info("validEntity is {}", validVO);
