@@ -112,7 +112,14 @@ permalink: /links/
   <LinkCard title="图片压缩" icon="fa-solid:tools" href="https://tinify.cn/">
     图片中相似的颜色会被合并
   </LinkCard>
+  <LinkCard title="FreeConvert" icon="fa-solid:tools" href="https://www.freeconvert.com/zh/compress-jpeg/download">
+    图片压缩和各种工具
+  </LinkCard>
 
+
+  <LinkCard title="docsmall" icon="fa-solid:tools" href="https://docsmall.com/image-compress">
+    图片压缩，抠图，PDF处理
+  </LinkCard>
   <LinkCard title="sql转entity" icon="fa-solid:tools" href="https://www.lddgo.net/string/mysql-to-java">
     在线MySQL生成JavaBean
   </LinkCard>
