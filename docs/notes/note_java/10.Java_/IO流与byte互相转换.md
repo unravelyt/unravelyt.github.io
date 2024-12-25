@@ -7,6 +7,18 @@ permalink: /note_java/xcd49nql/
 ---
 
 
+## 0. 写到本地
+```java
+
+File file = new File("/data/fe-workbench.tar.gz");
+try (FileOutputStream fos = new FileOutputStream(file)) {
+    IOUtils.write(in.readAllBytes(), fos);
+    System.out.println("Content written to file successfully.");
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+```
 
 ## 1. File转byte[]
 

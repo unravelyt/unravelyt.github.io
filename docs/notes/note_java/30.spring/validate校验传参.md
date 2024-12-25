@@ -249,16 +249,25 @@ private String sex;
 
 
 
-### 分组校验
+## 6.分组校验
 
 有的时候，开发者在某一个实体类中定义了很多校验规则，但是在某一次业务处理中，并不需要这么多校验规则，此时就可以使用分组校验：
 
 首先创建两个分组接口：
 
 ```java
-public interface ValidationGroup1 {
-}
-public interface ValidationGroup2 {
+public class ValidationCategory {
+
+    /**
+     * 质检
+     */
+    public interface Group1 {}
+
+    /**
+     * 详情
+     */
+    public interface Group2 {}
+
 }
 
 ```
@@ -272,10 +281,10 @@ public class User {
 	
 	//groups属性，表示该校验属性规则所属的分组
 
-    @Size(min = 5, max = 10, message = "{user.name.size}", groups = ValidationGroup1.class)
+    @Size(min = 5, max = 10, message = "{user.name.size}", groups = Group1.class)
     private String name;
 
-    @NotNull(message = "{user.address.notnull}", groups = ValidationGroup2.class)
+    @NotNull(message = "{user.address.notnull}", groups = Group2.class)
     private String address;
 
     @DecimalMin(value = "1", message = "{user.age.size}")
@@ -283,7 +292,7 @@ public class User {
     private Integer age;
 
     @Email(message = "{user.email.pattern}")
-    @NotNull(message = "{user.email.notnull}", groups = {ValidationGroup1.class, ValidationGroup2.class})
+    @NotNull(message = "{user.email.notnull}", groups = {Group1.class, Group2.class})
     private String email;
 }
 ```
@@ -293,11 +302,11 @@ public class User {
 ```java
 @RestController
 public class UserController {
-
     
-    //@Validated(ValidationGroup2.class) 表示这里的校验使用ValidationGroup2分组的校验规则，即只校验邮箱地址是否为空、用户地址是否为空
+    //@Validated(ValidationGroup2.class) 表示这里的校验使用ValidationGroup2分组的校验规则，
+    // 即只校验邮箱地址是否为空、用户地址是否为空
     @PostMapping("/user")
-    public List<String> addUser(@Validated(ValidationGroup2.class) User user, BindingResult result){
+    public List<String> addUser(@Validated(Group2.class) User user, BindingResult result){
         List<String> errors = new ArrayList<>();
         if(result.hasErrors()){
             List<ObjectError> allErrors = result.getAllErrors();
@@ -309,144 +318,6 @@ public class UserController {
     }
 }
 ```
-
-
-
-## 6. 分组校验
-
-一个VO对象在新增的时候某些字段为必填，在更新的时候又非必填。如上面的`ValidVO`中 id 和 appId 属性在新增操作时都是**非必填**，而在编辑操作时都为**必填**，name在新增操作时为**必填**，面对这种场景你会怎么处理呢？
-
-在实际开发中我见到很多同学都是建立两个VO对象，`ValidCreateVO`，`ValidEditVO`来处理这种场景，这样确实也能实现效果，但是会造成类膨胀，而且极其容易被开发老鸟们嘲笑。
-
-其实`Validator`校验框架已经考虑到了这种场景并且提供了解决方案，就是**分组校验**
-
-### 6.1 定义分组接口
-
-这里我们定义一个分组接口ValidGroup让其继承`javax.validation.groups.Default`，再在分组接口中定义出多个不同的操作类型，Create，Update，Query，Delete。至于为什么需要继承Default我们稍后再说。
-
-```java
-public interface ValidGroup extends Default {
-  
-    interface Crud extends ValidGroup{
-        interface Create extends Crud{
-
-        }
-
-        interface Update extends Crud{
-
-        }
-
-        interface Query extends Crud{
-
-        }
-
-        interface Delete extends Crud{
-
-        }
-    }
-}
-```
-
-
-
-### 6.2 在模型中给参数分配分组
-
-给参数指定分组，对于未指定分组的则使用的是默认分组。
-
-```java
-@Data
-@ApiModel(value = "参数校验类")
-public class ValidVO {
-
-    @Null(groups = ValidGroup.Crud.Create.class)
-    @NotNull(groups = ValidGroup.Crud.Update.class, message = "应用ID不能为空")
-    private String id;
-
-    @Null(groups = ValidGroup.Crud.Create.class)
-    @NotNull(groups = ValidGroup.Crud.Update.class, message = "应用ID不能为空")
-    private String appId;
-
-    @NotBlank(groups = ValidGroup.Crud.Create.class,message = "名字为必填项")
-    private String name;
-  
-    @Email(message = "请填写正取的邮箱地址")
-    privte String email;
-
-       ...
-
-}
-```
-
-
-
-### 6.3 给需要参数校验的方法指定分组
-
-这里我们通过`value`属性给`add()`和`update()`方法分别指定Create和Update分组。
-
-```java
-@RestController
-@Api("参数校验")
-@Slf4j
-@Validated
-public class ValidController {
-
-    @ApiOperation("新增")
-    @PostMapping(value = "/valid/add")
-    public String add(@Validated(value = ValidGroup.Crud.Create.class) ValidVO validVO){
-        log.info("validEntity is {}", validVO);
-        return "test3 valid success";
-    }
-
-
-    @ApiOperation("更新")
-    @PostMapping(value = "/valid/update")
-    public String update(@Validated(value = ValidGroup.Crud.Update.class) ValidVO validVO){
-        log.info("validEntity is {}", validVO);
-        return "test4 valid success";
-    }
-}
-```
-
-### 6.4 体验效果
-
-```
-POST http://localhost:8080/valid/add
-Content-Type: application/x-www-form-urlencoded
-
-name=javadaily&level=12&email=476938977@qq.com&sex=F
-```
-
-在Create时我们没有传递id和appId参数，校验通过。
-
-当我们使用同样的参数调用update方法时则提示参数校验错误。
-
-```
-{
-  "status": 400,
-  "message": "ID不能为空; 应用ID不能为空",
-  "data": null,
-  "timestamp": 1628492514313
-}
-```
-
-由于email属于默认分组，而我们的分组接口`ValidGroup`已经继承了`Default`分组，所以也是可以对email字段作参数校验的。如：
-
-```
-POST http://localhost:8080/valid/add
-Content-Type: application/x-www-form-urlencoded
-
-name=javadaily&level=12&email=476938977&sex=F
-{
-  "status": 400,
-  "message": "请填写正取的邮箱地址",
-  "data": null,
-  "timestamp": 1628492637305
-}
-```
-
-当然如果你的ValidGroup没有继承Default分组，那在代码属性上就需要加上`@Validated(value = {ValidGroup.Crud.Create.class, Default.class}`才能让`email`字段的校验生效。
-
-
 
 ## 7. 常用注解
 

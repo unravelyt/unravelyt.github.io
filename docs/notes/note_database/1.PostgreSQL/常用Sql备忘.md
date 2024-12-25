@@ -1,5 +1,5 @@
 ---
-title: 常用Sql记录
+title: 常用SQL
 createTime: 2024/11/17 01:22:38
 permalink: /note_database/yzbypphy/
 ---

@@ -1,12 +1,11 @@
 ---
-title: SpringBoot读取Resource目录下的资源文件
+title: 读取Resource目录下文件
 tags:
   - Java
   - SpringBoot
 createTime: 2024/11/16 23:08:55
 permalink: /note_java/4z9inlqx/
 ---
-
 
 
 ## 1. 使用ResourceUtils获取
