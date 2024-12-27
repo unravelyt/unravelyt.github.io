@@ -1,5 +1,5 @@
 ---
-title: validate注解校验传参
+title: validate注解校验
 createTime: 2024/11/17 01:23:41
 permalink: /note_java/omgxitxi/
 ---
@@ -10,7 +10,8 @@ permalink: /note_java/omgxitxi/
 
 ## 1. 引入依赖
 
-注：从`springboot-2.3`开始，校验包被独立成了一个`starter`组件，所以需要引入validation和web，而`springboot-2.3`之前的版本只需要引入 web 依赖就可以了。
+注：从`springboot-2.3`开始，校验包被独立成了一个`starter`组件，所以需要引入validation和web，
+而`springboot-2.3`之前的版本只需要引入 web 依赖就可以了。
 
 ```xml
 <dependency>
@@ -71,7 +72,7 @@ public class ValidController {
 
 ### 2.2 方法级别的单个参数校验
 
-1、在方法所在的类上添加 @Validated 。注意，此处 只能使用 @Validated 注解 ，@Valid 无效 ，因为 @Valid 不能用在类上。
+1、在方法所在的类上添加 @Validated 。注意，此处只能使用 @Validated 注解 ，@Valid无效 ，因为@Valid不能用在类上。
 
 2、对方法中的每个参数上加上所需的验证注解，如 @Rang， @Max，@Min、自定义注解 等注解 ；
 
@@ -95,10 +96,6 @@ public class ValidationController {
 }
 ```
 
-
-
-
-
 ## 3. 全局异常处理器
 
 @Valid 和 @Validated 的异常信息捕获必须使用 `BindingResult bindingResult` （如下示例）， 非常麻烦。
@@ -113,11 +110,10 @@ public void saveAll(@Validated User user, BindingResult bindingResult){
 }
 ```
 
-
-
 `Validator`校验框架返回的错误提示太臃肿了，不便于阅读，为了方便前端提示，我们需要将其简化一下。
 
-直接修改之前定义的`RestExceptionHandler`，单独拦截参数校验的三个异常：`javax.validation.ConstraintViolationException`，`org.springframework.validation.BindException`，`org.springframework.web.bind.MethodArgumentNotValidException`
+直接修改之前定义的`RestExceptionHandler`，单独拦截参数校验的三个异常：`javax.validation.ConstraintViolationException`，
+`org.springframework.validation.BindException`，`org.springframework.web.bind.MethodArgumentNotValidException`
 
 ```java
 @ExceptionHandler(value = {
@@ -160,7 +156,8 @@ public ResponseEntity<ResultData<String>> handleValidatedException(Exception e) 
 
 ## 4. 嵌套验证
 
-在实际的开发中，前台会后台传递一个list，我们不仅要限制每次请求list内的个数，同时还要对list内基本元素的属性值进行校验。这个时候就需要进行嵌套验证了，实现的方式很简单。在list上添加@Vaild就可以实现了。
+在实际的开发中，前台会后台传递一个list，我们不仅要限制每次请求list内的个数，同时还要对list内基本元素的属性值进行校验。
+这个时候就需要进行嵌套验证了，实现的方式很简单。在list上添加@Vaild就可以实现了。
 
 ```java
 @Data
@@ -244,10 +241,6 @@ public class EnumStringValidator implements ConstraintValidator<EnumString, Stri
 @EnumString(value = {"F","M"}, message="性别只允许为F或M")
 private String sex;
 ```
-
-
-
-
 
 ## 6.分组校验
 
@@ -355,13 +348,15 @@ public class UserController {
 
 ## 8. @Validated与@Valid区别
 
-
-
 @Validated是对@Valid进行了二次封装，它们的区别如下表
 
-| 不同     | @Valid                                      | @Validated                                                   |
-| -------- | ------------------------------------------- | ------------------------------------------------------------ |
-| 来源     | 是Hibernate validation 的 校验注解          | 是 Spring Validator 的校验注解，是 Hibernate validation 基础上的增加版 |
-| 注解位置 | 用在 构造函数、方法、方法参数 和 成员属性上 | 用在 类、方法和方法参数上。 但不能用于成员属性               |
-| 嵌套验证 | 用在级联对象的成员属性上面                  | 不支持                                                       |
-| 分组     | 无此功能                                    | 提供分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制 |
+| 不同   | @Valid                                           | @Validated                                                                                         |
+|------|--------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| 来源   | 是Hibernate validation 的 校验注解，标准 JSR-303 规范的标记型注解 | 是 Spring Validator 的校验注解，是 Hibernate validation 基础上的增加版，Spring 框架特有的注解，是标准 JSR-303 的一个变种，提供了一个分组功能 |
+| 注解位置 | 用在 构造函数、方法、方法参数 和 成员属性上                          | 用在 类、方法和方法参数上。 但不能用于成员属性                                                                           |
+| 嵌套验证 | 用在级联对象的成员属性上面                                    | 不支持                                                                                                |
+| 分组   | 无此功能                                             | 提供分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制                                                                   |
+
+
+
+
